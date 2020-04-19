@@ -1,0 +1,144 @@
+.greatbritain {
+  position: relative;
+  display: block;
+  background: no-repeat url(../img/greatbritain.svg) center;
+  width: 33px;
+  height: 33px;
+  margin-top: 12px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.27);
+  border-radius: 100%;
+  overflow: hidden;
+} 
+.greatbritain::before {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 33px;
+  height: 33px;
+  background: radial-gradient(60.3% 44.38% at 31.39% 31.7%, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 96.35%);
+}
+
+
+.canada {
+  position: relative;
+  display: block;
+  background: no-repeat url(../img/canada.svg) center;
+  width: 33px;
+  height: 33px;
+  margin-top: 12px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.27);
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.canada::before {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 33px;
+  height: 33px;
+
+  background: radial-gradient(60.3% 44.38% at 31.39% 31.7%, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 96.35%);
+}
+
+.children-summer-holidays {
+  background: no-repeat url(../img/summer-children.svg) center;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  display: block;
+}
+
+.children-winter-holidays {
+  background: no-repeat url(../img/winter-children.svg) center;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  display: block;
+}
+
+.children-spring-holidays {
+  background: no-repeat url(../img/spring-children.svg) center;
+  width: 24px;
+  height: 24px;
+  position: relative;
+  display: block;
+}
+
+.christ {
+  background: no-repeat url(../img/christ.png) center;
+  height: 30px;
+  width: 27px;
+  margin-right: 10px;
+}
+
+.burlington {
+  background: no-repeat url(../img/burlington.svg) center;
+  height: 30px;
+  width: 40px;
+  margin-right: 10px;
+}
+
+.royal {
+  background: no-repeat url(../img/royal.svg) center;
+  height: 30px;
+  width: 60px;
+  margin-right: 10px;
+}
+
+
+
+.img-test {
+  position: relative;
+  display: block;
+  background: no-repeat url(../img/img.svg) center;
+  width: 33px;
+  height: 33px;
+  margin-top: 12px;
+}
+
+
+
+.ReactModal__Overlay {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  opacity: 0;
+  
+  transition: opacity 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95),
+    transform 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  z-index: 999;
+  backdrop-filter: saturate(180%) blur(20px);
+}
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+  
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+ 
+}
+
+.Block:hover .greatbritain {
+  animation: flag 2.5s infinite linear;
+}
+
+@keyframes flag {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Block:hover .canada {
+  animation: flag 2.5s infinite linear;
+}
+
+@keyframes flag {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,44 @@
+.slick-list {
+    overflow: inherit !important;
+}
+
+.bg-main-list {
+    background: no-repeat url(../../../img/flags.svg) center;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.summer-holidays {
+    background: no-repeat url(../../../img/summer.svg) center;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    display: block;
+}
+
+.winter-holidays {
+    background: no-repeat url(../../../img/winter.svg) center;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    display: block;
+}
+
+.spring-holidays {
+    background: no-repeat url(../../../img/spring.svg) center;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    display: block;
+}
+
+.descr-solid::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 10px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: url(../../../img/descrBg.svg) ;
+}
