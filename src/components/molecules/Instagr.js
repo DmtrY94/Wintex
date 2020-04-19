@@ -459,41 +459,7 @@ class Instagr extends Component {
   }
   
 
-  
- 
-
-  
-  
-  
 
   
   export default Instagr
 
-  export const query = graphql`
-  query InstaPostModal($id: String) {
-    instaNode(id: { eq: $id }) {
-      id
-      localFile {
-        childImageSharp {
-          fluid(maxWidth: 1200) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-      caption
-      username
-    }
-    allInstaNode(sort: {fields: id, order: DESC}, limit: 10) {
-      nodes {  
-          id
-          localFile {
-              childImageSharp {
-              fluid(maxWidth: 200) {
-                  ...GatsbyImageSharpFluid
-              }
-            }
-          } 
-      }        
-    }
-  }
- ` 
