@@ -109,13 +109,13 @@ const Layout = (props) => {
       ></motion.div>
       <motion.div
         initial={{ height: '100%' }}
-        animate={{ height: '50%' }} 
+        animate={{ height: '70%' }} 
         transition={{ duration: 0.7 }} 
         sx={{
           position: 'absolute',
           width: '100%',
-          height: '50%',
-          background: 'linear-gradient(225.35deg, #00B707 27.55%, #8FD300 95.85%)',
+          height: '70%',
+          background: 'linear-gradient(354.04deg, #8FD300 33.78%, #00B707 96.12%)',
           left: 0,
           top: ['-3.7em', '-5.7em', '-5.7em' ],
           zIndex: '1',

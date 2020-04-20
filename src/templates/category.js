@@ -56,6 +56,7 @@ const CreateCategory = props => {
       <div
         sx={{
           marginTop: '6vh',
+          marginBottom: '12vh',
           position: 'relative',
           height: '100%'
         }}

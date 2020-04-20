@@ -137,7 +137,8 @@ const ContentList = ({ node }) => {
                                                     color: 'white',
                                                     padding: '4px 5px 4px 5px',
                                                     borderRadius: '5px',
-                                                    background: 'linear-gradient(103.84deg, #56B8E9 -18.6%, #0B6CFE 99.61%)'
+                                                    bg: 'primary',
+                                                    boxShadow: '0 0 0px 1px #4891FE'
                                                 
                                                 }}
                                         > {node.PostTypeForChildrenFields.school}</div>

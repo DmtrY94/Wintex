@@ -9,6 +9,8 @@ import HorizontalScroller from 'react-horizontal-scroll-container'
 import Swiper from 'react-id-swiper'
 
 
+
+
 import 'swiper/css/swiper.css';
 
 Modal.setAppElement(`#___gatsby`)
@@ -230,6 +232,32 @@ class Instagr extends Component {
                     width: ['initial', '100%', 'initial']
                   }}
                 >
+                  <button             
+                    sx={{
+                       
+                        background: 0,
+                        border: 0,
+                        position: "absolute",
+                        display: ['none', 'flex', 'none'],
+                        alignItems: "center",
+                        justifyContent: "center",                      
+                        top: 0,
+                        width: '100%',
+                        padding: '15px 0',
+                        zIndex: 1,
+                        color: "white",
+                        cursor: 'pointer',  
+                        outline: 'none',                      
+                        ":hover": {
+                        color: "white",
+                        },
+                    }}
+                    onClick={this.closeModal}
+                >
+                    <svg width="35" height="9" viewBox="0 0 35 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M34.9306 0.63348C34.7282 0.119629 34.1475 -0.132831 33.6337 0.0695954L17.5002 6.4252L1.36674 0.0695968C0.852893 -0.132829 0.272239 0.119631 0.0698124 0.633482C-0.132614 1.14733 0.119846 1.72799 0.633697 1.93041L17.1337 8.43041C17.3692 8.5232 17.6312 8.5232 17.8667 8.43041L34.3667 1.93041C34.8806 1.72799 35.1331 1.14733 34.9306 0.63348Z" fill="white"/>
+                    </svg>
+                </button>
                   <HorizontalScroller invert sensibility={50}>
                   {node.map((nodes, i) => {
                       
@@ -322,12 +350,14 @@ class Instagr extends Component {
                   width: ['initial', '100%', 'initial']
                 }}
                >
+                 
+
                  <button             
                     sx={{
                         width: "30px",
                         height: "30px",
                         position: "absolute",
-                        display: "flex",
+                        display: ['flex', 'none', 'flex'],
                         alignItems: "center",
                         justifyContent: "center",
                         m: 3,
@@ -351,6 +381,8 @@ class Instagr extends Component {
                     <path fillRule="evenodd" clipRule="evenodd" d="M2.6667 0.407868C2.27618 0.017344 1.64301 0.017344 1.25249 0.407868C0.861964 0.798392 0.861964 1.43156 1.25249 1.82208L7.54539 8.11498L1.25249 14.4079C0.861964 14.7984 0.861964 15.4316 1.25249 15.8221C1.64301 16.2126 2.27618 16.2126 2.6667 15.8221L8.9596 9.5292L15.2525 15.8221C15.643 16.2126 16.2762 16.2126 16.6667 15.8221C17.0572 15.4316 17.0572 14.7984 16.6667 14.4079L10.3738 8.11498L16.6667 1.8221C17.0572 1.43157 17.0572 0.798408 16.6667 0.407883C16.2762 0.0173588 15.643 0.0173587 15.2525 0.407883L8.9596 6.70077L2.6667 0.407868Z" fill="white"/>
                     </svg>
                 </button>
+
+            
 
                 
 

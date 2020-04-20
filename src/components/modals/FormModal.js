@@ -62,10 +62,14 @@ class FormModal extends Component {
         })
 
       return (
-        <div>           
+        <div
+            sx={{
+                display: ['block', 'none', 'block']       
+            }}
+        >           
             <button onClick={this.openModal}
                 sx={{
-                    background: 'linear-gradient(222.67deg, #8FD300 46.39%, #31C005 107.32%)',
+                    bg: 'primary',
                     border: 0,
                     borderRadius: '100px',
                     padding: '18px 27px',
@@ -78,14 +82,13 @@ class FormModal extends Component {
                     outline: 'none',
                     display: 'flex',
                     alignItems: 'center',
-                    boxShadow: '0px 10px 30px rgba(82, 199, 3, 0.71)',
                     willChange: 'box-shadow',
                      transition: 'box-shadow 0.25s ease-out',
                     ":focus": {
-                        boxShadow: '0px 1px 10px rgba(0, 0, 0, 0.05);',   
+                        boxShadow: '0px 10px 30px rgba(11,128,254,0.71)',   
                     },                                
                     ":hover": {                           
-                        boxShadow: '0px 1px 10px rgba(0, 0, 0, 0.05);',                   
+                        boxShadow: '0px 10px 30px rgba(11,128,254,0.71)',                   
                     }, 
                 }}
             >

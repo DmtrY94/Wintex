@@ -149,7 +149,12 @@ const CreatePage = props => {
               zIndex: '2',                    
               ' &::-webkit-scrollbar ' : {
                 width: 0,
-            },
+              },
+              "@media screen and (max-width: 768px)": {
+                marginTop: '30px',
+                padding: 0
+               
+              },
             }}
           >
           <div
@@ -159,7 +164,13 @@ const CreatePage = props => {
               height: '100%',                  
               ' &::-webkit-scrollbar ' : {
                 width: 0,
-            },
+              },
+              "@media screen and (max-width: 768px)": {
+                backgroundColor: '#fff',
+                padding: '20px',
+                borderRadius: '10px'
+               
+              },
             }}
           >
           

@@ -72,7 +72,7 @@ const ContentList = () => {
           },
           320: {
             slidesPerView: 1,
-            spaceBetween: 15
+            spaceBetween: 25
           }
         }
       }
@@ -133,7 +133,6 @@ const ContentList = () => {
         >     
                 <div
                 sx={{
-                    marginTop: '3vh',
                     borderTop: '2px solid rgba(0, 0, 0, 0.035)',
                 }}
                 >
@@ -279,7 +278,8 @@ const ContentList = () => {
                                                     color: 'white',
                                                     padding: '4px 5px 4px 5px',
                                                     borderRadius: '5px',
-                                                    background: 'linear-gradient(103.84deg, #56B8E9 -18.6%, #0B6CFE 99.61%)'
+                                                    bg: 'primary',
+                                                    boxShadow: '0 0 0px 1px #4891FE'
                                                 
                                                 }}
                                         > {node.PostTypeForChildrenFields.school}</div>

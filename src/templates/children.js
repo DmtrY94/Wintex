@@ -9,6 +9,12 @@ import ShareModal from '../components/modals/ShareModal'
 import YoutubeModal from '../components/modals/YoutubeModal'
 import FormModalChildren from  '../components/modals/FormModalChildren'
 import SEO from "../components/particles/SEO"
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile
+} from "react-device-detect";
 
 import { motion, AnimatePresence } from "framer-motion"
 import Helmet from "react-helmet"
@@ -259,6 +265,7 @@ const createChildrens = props => {
               <Gallery image={image}/>
             </div>
           </motion.div>
+          
           <motion.div
           initial={{ x: 60, opacity: 0}}
           animate={{ x: 0, opacity: 1}} 
@@ -287,6 +294,7 @@ const createChildrens = props => {
               borderTopRightRadius: [0, '10px', 0],
           },
           }}>
+          
             
             <motion.div
               initial='initial' animate='animate'             

@@ -20,20 +20,6 @@ const IndexPage = () => {
                 <Hero />
                 <ContentList />
                 <ContentNews /> 
-                <div 
-                    sx={{                      
-                        height: '200px',
-                        display: 'block',
-                        position: 'absolute',
-                        top: '60%',
-                        transform: 'translateY(-60%) rotate(3deg)',
-                        left: '-10px',
-                        right: '-10px',
-                        zIndex: '-1',
-                        bg: '#EFD80A'
-
-                    }}
-                ></div>
             </Layout>
         
 
