@@ -15,3 +15,10 @@
     background: no-repeat url(../../../img/sale.svg) center;
     right: 30px;
 }
+
+.tolbar__menu--show {
+    
+    visibility: visible !important;
+    opacity: 1 !important;
+    
+}

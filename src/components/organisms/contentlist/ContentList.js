@@ -59,6 +59,10 @@ const ContentList = () => {
             spaceBetween: 40
           },  
           1280: {
+            slidesPerView: 4,
+            spaceBetween: 40
+          },
+          1160: {
             slidesPerView: 3,
             spaceBetween: 40
           },

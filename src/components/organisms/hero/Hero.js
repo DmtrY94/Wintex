@@ -81,7 +81,7 @@ const Hero = () => {
                       zIndex: 2,
                       
                     }}
-                    >{data.wordpress.pageBy.PageMain.bigtitle}
+                    dangerouslySetInnerHTML={{  __html: data.wordpress.pageBy.PageMain.bigtitle }} >
                     </h1>                 
                     <Sticker textcircle={data.wordpress.pageBy.PageMain.textcircle}/>
                   </div>
@@ -205,7 +205,7 @@ const Hero = () => {
                  transition={{ duration: 3, delay: 1.6 }}    
               sx={{
                 position: 'absolute',              
-                bottom: [0, '-2px', 0],
+                bottom:  '-3px',
                 right: ['10vh', 0, '10vh'],
                 zIndex: '1'
               }}

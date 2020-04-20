@@ -212,11 +212,11 @@ const MenuItem = ({ url, label, childItems }) => {
     return (
     <motion.div
         sx={{position: 'relative'}}
-        className="menu-item"
+        className="menu-item" 
         whileHover={{ y: -9 }}
         transition={{ duration: 0.6}}
     >
-        
+        {('#' !== url) ? (
         <Link 
         sx={{
             display: 'flex',
@@ -235,7 +235,25 @@ const MenuItem = ({ url, label, childItems }) => {
         activeStyle={{ color: "#0B6CFE", fontWeight: '400' }}
         >{label}               
         </Link>
-        
+        ) : ( 
+            <div                         
+                sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    padding: '5px 15px',
+                    color: 'white',
+                    fontFamily: '"Oswald", sans-serif',
+                    fontWeight: '300',
+                    textTransform: 'uppercase',
+                    fontSize: '1rem',
+                    ":hover": {                      
+                        color: 'primary',
+                    },
+                }}
+            >
+                {label}
+            </div>
+        )}    
         <div
             className="menu-nav"
             sx={{

@@ -95,9 +95,9 @@ const Contact = () => {
                             sx={{
                               position: 'relative',
                               display: 'block',
-                              color: 'white',
+                              color: ['white', '#0D2344', 'white'],
                               fontFamily: 'heading',
-                              bg: 'rgba(255, 255, 255, 0.1)',
+                              bg: ['rgba(255, 255, 255, 0.1)', 'white', 'rgba(255, 255, 255, 0.1)'],
                               borderRadius: '10px',
                               overflow: 'hidden',
                               padding: '30px'
@@ -131,7 +131,11 @@ const Contact = () => {
                               sx={{
                                 display: 'flex',
                                 marginTop: '15px',
-                                alignItems: 'center'
+                                alignItems: 'center',
+                                "@media screen and (max-width: 768px)": {
+                                  flexDirection: 'column',
+                                  alignItems: 'stretch'
+                                },
                               }}
                             >
                               <a href="#"
@@ -143,7 +147,13 @@ const Contact = () => {
                                   borderRadius: '10px',
                                   bg: 'rgba(255, 255, 255, 0.2)',
                                   color: 'white',
-                                  marginRight: '15px'
+                                  marginRight: '15px',
+                                  "@media screen and (max-width: 768px)": {
+                                    marginBottom: '15px',
+                                    marginRight: 0,
+                                    bg: 'rgba(11, 108, 254, 0.05)',
+                                    color: '#0D2344',
+                                  },
                                 }}
                               >{data.wordpress.pageBy.PageContacts.phonekr1}</a>
                               <a 
@@ -153,8 +163,8 @@ const Contact = () => {
                                   fontSize: '1.5rem',
                                   padding: '5px 10px',
                                   borderRadius: '10px',
-                                  bg: 'rgba(255, 255, 255, 0.2)',
-                                  color: 'white'
+                                  bg: ['rgba(255, 255, 255, 0.2)', 'rgba(11, 108, 254, 0.05)', 'rgba(255, 255, 255, 0.2)'],
+                                  color: ['white', '#0D2344', 'white'],
                                 }}
                               href="#">{data.wordpress.pageBy.PageContacts.phonekr2}</a>
                             </div>
@@ -166,7 +176,7 @@ const Contact = () => {
                               display: 'block',
                               color: 'white',
                               fontFamily: 'heading',
-                              bg: 'rgba(255, 255, 255, 0.1)',
+                              bg: ['rgba(255, 255, 255, 0.1)', 'primary', 'rgba(255, 255, 255, 0.1)'],
                               borderRadius: '10px',
                               overflow: 'hidden',
                               padding: '30px',
@@ -201,7 +211,11 @@ const Contact = () => {
                               sx={{
                                 display: 'flex',
                                 marginTop: '30px',
-                                alignItems: 'center'
+                                alignItems: 'center',
+                                "@media screen and (max-width: 768px)": {
+                                  flexDirection: 'column',
+                                  alignItems: 'stretch'
+                                },
                               }}
                             >
                               <a href="#"
@@ -213,7 +227,11 @@ const Contact = () => {
                                   borderRadius: '10px',
                                   bg: 'rgba(255, 255, 255, 0.2)',
                                   color: 'white',
-                                  marginRight: '15px'
+                                  marginRight: '15px',
+                                  "@media screen and (max-width: 768px)": {
+                                    marginBottom: '15px',
+                                    marginRight: 0,
+                                  },
                                 }}
                               >{data.wordpress.pageBy.PageContacts.phonek1}</a>
                               <a 
@@ -278,13 +296,18 @@ const Contact = () => {
                           animate={{ opacity: 1,}} 
                           transition={{ delay: 3, duration: 2}} 
                           sx={{
-                            width: ['50%', '100%', '50%'],
-                            position: ['absolute', 'relative', 'absolute'],
+                            width: '50%',
+                            position: 'absolute',
                             top: 0,
                             right: 0,
                             bottom: 0,
                             height: '100%',
                             zIndex: 0,
+                            "@media screen and (max-width: 768px)": {
+                              width:  '100%', 
+                              position: 'relative', 
+                              padding: '30px'
+                            },
                           }}
                         >
                           <GoogleMaps />

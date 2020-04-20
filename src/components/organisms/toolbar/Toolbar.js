@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'gatsby'
 import { jsx } from 'theme-ui'
 import { useRelative } from '../../particles/hooks/useRelative'
@@ -11,6 +11,7 @@ import './toolbar.css'
 function Toolbar() {
     const menuData = useSiteMenuData()
     const toolbarData = menuData.nodes.find(menu => menu.slug == "toolbarmobile")
+    
 
     return (
 
@@ -78,16 +79,17 @@ function Toolbar() {
 
 
 const ToolbarItem = ({ url, label, childItems }) => {
+    const [menuOpen, toggleMenu] = useState(false)
     const relativeLink = useRelative(url)
 
-
+    const childitems = childItems.nodes
     return (
     <div
         sx={{position: 'absolute'}}
         className="menu-item toolbar-icon"
     >
+        {('#' !== url) ? (
         <Link 
-        
         sx={{
             width: '33px',
             height: '33px',
@@ -108,15 +110,24 @@ const ToolbarItem = ({ url, label, childItems }) => {
         
         >               
         </Link>
+        ) : ( 
+            <div
+                onClick={() => toggleMenu(!menuOpen)}
+                sx={{
+                    width: '33px',
+                    height: '33px',                
+                }}
+            ></div>
+        )}
         <div
-            className="menu-nav"
+            className={menuOpen ? `tolbar__menu--show` : undefined}
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                position: 'absolute',
-                width: '250px',
-                left: '50%',             
-                transform: 'translateX(-50%)',
+                position: 'fixed',
+                left: '30px',
+                right: '30px',     
+                bottom: '60px',        
                 bg: 'primary',
                 borderRadius: '10px',
                 zIndex: '4',
@@ -125,14 +136,42 @@ const ToolbarItem = ({ url, label, childItems }) => {
                 opacity: 0,
             }}
         >
-            
+             {childitems.map(childitem => (                          
+                <MenuChildItem key={childitem.id} {...childitem} />                                          
+            ))}   
         </div>   
     </div>
     )
 }
 
 
+const MenuChildItem = ({url, label}) => {
+    const relativeChildLink = useRelative(url)
 
+    return (
+        <div
+           
+        >
+            <Link 
+            
+            sx={{
+                display: 'flex',
+                alignItems: 'center',               
+                padding: '15px',
+                color: 'white',
+                fontFamily: 'body',
+                fontWeight: '300',
+                fontSize: '1rem',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.15)'
+            }}
+            to={`/for-childrens/${relativeChildLink}`}
+            activeStyle={{ color: "rgba(255, 255, 255, 0.6)" }}
+            >{label}   
+            </Link>
+        </div>
+
+    )
+}
 
 
 

@@ -20,7 +20,7 @@ const Sticker = ({ textcircle }) => {
             sx={{
                 position: 'absolute',
                 top: '0',
-                right: '-50%',
+                right: ['-50%', '0', '-80%', '-65%', '-50%'],
                 transform: 'translate(-50%)',
             }}
         >
