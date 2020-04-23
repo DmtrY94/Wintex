@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 import { jsx } from 'theme-ui'
 import { useRelative } from '../../particles/hooks/useRelative'
 import { useSiteMenuData } from '../../particles/hooks/useSiteMenuData'
+import FormModalM from '../../modals/FormModalM'
 
 import './toolbar.css'
 
@@ -24,40 +25,23 @@ function Toolbar() {
           left: 0, 
           right: 0,
           height: '55px',
-          zIndex: '999',
+          borderTopLeftRadius: '10px',
+          borderTopRightRadius: '10px',
+          zIndex: '998',
           background: 'linear-gradient(191.87deg, #8FD300 27.55%, #00B707 132.85%)'
 
         }}
       >
-        <div
-            sx={{ 
-                position: 'absolute', 
-                left: '50%',
-                top: '50%',
-                transform: 'translate(-50%, -50%)',
-            }}
-        >
-            <span
-                sx={{
-                    width: '44px',
-                    height: '44px',
-                    display: 'block',
-                    border: '2px solid rgba(255, 255, 255, 0.2)',
-                    borderRadius: '100px'
-                }}
-            >
-            </span>
-        </div>  
+         
         <nav
             sx={{
                 display: 'flex',
                 flexDirection: 'row',
-                position: 'relative',
-                top: '50%', 
-                transform: 'translateY(-50%)',
+                position: 'relative',               
                 padding: '0 30px',
-                width: '100%',
-                height: '33px'
+                width: '80%',
+                height: '55px',
+                justifyContent: 'space-between'
             }}
         >
         {toolbarData.menuItems.nodes.map(item => (
@@ -66,6 +50,10 @@ function Toolbar() {
                          
                             
          ))}
+
+       
+        <FormModalM />
+        
         </nav>
 
       </div>
@@ -85,14 +73,14 @@ const ToolbarItem = ({ url, label, childItems }) => {
     const childitems = childItems.nodes
     return (
     <div
-        sx={{position: 'absolute'}}
+        sx={{}}
         className="menu-item toolbar-icon"
     >
         {('#' !== url) ? (
         <Link 
         sx={{
-            width: '33px',
-            height: '33px',
+            width: '29px',
+            height: '55px',
             display: 'flex',
             alignItems: 'center',
             padding: '5px 15px',
@@ -114,8 +102,8 @@ const ToolbarItem = ({ url, label, childItems }) => {
             <div
                 onClick={() => toggleMenu(!menuOpen)}
                 sx={{
-                    width: '33px',
-                    height: '33px',                
+                    width: '29px',
+                    height: '55px',                
                 }}
             ></div>
         )}
@@ -127,7 +115,7 @@ const ToolbarItem = ({ url, label, childItems }) => {
                 position: 'fixed',
                 left: '30px',
                 right: '30px',     
-                bottom: '60px',        
+                bottom: '70px',        
                 bg: 'primary',
                 borderRadius: '10px',
                 zIndex: '4',

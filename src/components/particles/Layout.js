@@ -1,12 +1,13 @@
 /** @jsx jsx */
 import React from 'react'
 import { jsx, Styled } from 'theme-ui'
-import Footer from "../organisms/footer/Footer";
-import Header from "../organisms/header/Header";
-import Toolbar from "../organisms/toolbar/Toolbar";
+import Footer from '../organisms/footer/Footer'
+import Header from '../organisms/header/Header'
+import Toolbar from '../organisms/toolbar/Toolbar'
 import Container from '../particles/Container'
+import Chat from '../molecules/Chat'
 import 'fira-sans-cyrillic'
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence } from 'framer-motion'
 
 
 import './all.sass'
@@ -85,6 +86,7 @@ const Layout = (props) => {
       </motion.div>
       <Footer />
       </motion.div>
+      <Chat />
       <Toolbar />
       </Container>
       
@@ -124,6 +126,7 @@ const Layout = (props) => {
         }}
       ></motion.div>
       
+
     </div>
     </AnimatePresence>
   )

@@ -59,6 +59,15 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        custom: {
+          families: ["Oswald, Fira Sans"],
+          urls: ["/static/fonts/fonts.css"],
+        },
+      },
+    },
+    {
       resolve: `gatsby-wpgraphql-inline-images`,
       options: {
         wordPressUrl: `https://wintex.local/`,

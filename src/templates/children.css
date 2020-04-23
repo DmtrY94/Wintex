@@ -30,7 +30,6 @@
   border-radius: 100%;
   overflow: hidden;
 }
-
 .canada::before {
   display: block;
   position: absolute;
@@ -40,6 +39,29 @@
 
   background: radial-gradient(60.3% 44.38% at 31.39% 31.7%, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 96.35%);
 }
+
+.usa {
+  position: relative;
+  display: block;
+  background: no-repeat url(../img/usa.svg) center;
+  width: 33px;
+  height: 33px;
+  margin-top: 12px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.27);
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.usa::before {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 33px;
+  height: 33px;
+
+  background: radial-gradient(60.3% 44.38% at 31.39% 31.7%, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 96.35%);
+}
+
 
 .children-summer-holidays {
   background: no-repeat url(../img/summer-children.svg) center;
@@ -86,6 +108,14 @@
   margin-right: 10px;
 }
 
+.kean {
+  background: no-repeat url(../img/kean.png) center;
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
+}
+
+
 
 
 .img-test {
@@ -131,9 +161,11 @@
   }
 }
 
-.Block:hover .canada {
+.Block:hover .canada, .Block:hover .usa {
   animation: flag 2.5s infinite linear;
 }
+
+
 
 @keyframes flag {
   from {

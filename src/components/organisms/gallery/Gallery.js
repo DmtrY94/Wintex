@@ -1,9 +1,9 @@
 /** @jsx jsx */
 import React, { Component, Fragment } from 'react'
 import { jsx, Styled } from 'theme-ui'
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
-import Img from "gatsby-image"
+import Img from 'gatsby-image'
 import PropTypes from 'prop-types'
 
 
@@ -259,7 +259,7 @@ import '../../particles/all.sass'
   `
   const LightboxContent = styled.div`
     margin: 15px;
-    max-width: 600px;
+    max-width: 1000px;
     width: 100%;
   `
   

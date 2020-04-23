@@ -83,12 +83,16 @@ class FormModal extends Component {
                     display: 'flex',
                     alignItems: 'center',
                     willChange: 'box-shadow',
-                     transition: 'box-shadow 0.25s ease-out',
+                    transition: 'box-shadow 0.25s ease-out',
                     ":focus": {
-                        boxShadow: '0px 10px 30px rgba(11,128,254,0.71)',   
+                        background: 'linear-gradient(272.6deg, #56B8E9 12.03%, #0B6CFE 72.88%)',
+                        boxShadow: '0px 10px 30px rgba(11, 128, 254, 0.71)', 
+                        color: 'white',   
                     },                                
-                    ":hover": {                           
-                        boxShadow: '0px 10px 30px rgba(11,128,254,0.71)',                   
+                    ":hover": {   
+                        background: 'linear-gradient(272.6deg, #56B8E9 12.03%, #0B6CFE 72.88%)',                       
+                        boxShadow: '0px 10px 30px rgba(11, 128, 254, 0.71)', 
+                        color: 'white',                   
                     }, 
                 }}
             >
@@ -100,7 +104,7 @@ class FormModal extends Component {
                     }}
                 >
                     <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M0.633174 0.993821C0.24265 1.38435 0.24265 2.01751 0.633174 2.40803L5.89975 7.67461L0.633174 12.9412C0.24265 13.3317 0.24265 13.9649 0.633174 14.3554C1.0237 14.7459 1.65686 14.7459 2.04739 14.3554L8.02107 8.38172C8.4116 7.99119 8.4116 7.35803 8.02107 6.96751L2.04739 0.993821C1.65686 0.603297 1.0237 0.603297 0.633174 0.993821Z" fill="white"/>
+                    <path fillRule="evenodd" clipRule="evenodd" d="M0.633174 0.993821C0.24265 1.38435 0.24265 2.01751 0.633174 2.40803L5.89975 7.67461L0.633174 12.9412C0.24265 13.3317 0.24265 13.9649 0.633174 14.3554C1.0237 14.7459 1.65686 14.7459 2.04739 14.3554L8.02107 8.38172C8.4116 7.99119 8.4116 7.35803 8.02107 6.96751L2.04739 0.993821C1.65686 0.603297 1.0237 0.603297 0.633174 0.993821Z" fill="currentColor"/>
                     </svg>
                 </span>
             </button>
@@ -262,7 +266,7 @@ class FormModal extends Component {
                     
                     <button onClick={this.openModal}
                         sx={{
-                            background: 'linear-gradient(272.6deg, #56B8E9 12.03%, #0B6CFE 72.88%)',
+                            bg: 'primary',
                             border: 0,
                             borderRadius: '100px',
                             padding: '18px 27px',
@@ -280,9 +284,11 @@ class FormModal extends Component {
                             transition: 'box-shadow 0.25s ease-out',
                             margin: '0 auto',
                             ":focus": {
+                                background: 'linear-gradient(272.6deg, #56B8E9 12.03%, #0B6CFE 72.88%)',
                                 boxShadow: '0px 1px 10px rgba(0, 0, 0, 0.05);',   
                             },                                
-                            ":hover": {                           
+                            ":hover": {  
+                                background: 'linear-gradient(272.6deg, #56B8E9 12.03%, #0B6CFE 72.88%)',                         
                                 boxShadow: '0px 1px 10px rgba(0, 0, 0, 0.05);',                   
                             }, 
                         }}

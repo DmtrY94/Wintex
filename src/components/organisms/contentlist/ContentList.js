@@ -2,13 +2,13 @@
 import React, {useState} from 'react'
 import { Link } from 'gatsby'
 import { jsx, Styled } from 'theme-ui'
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from 'gatsby'
 import FluidImage from '../../molecules/FluidImage'
-import { motion, AnimatePresence  } from "framer-motion"
+import { motion, AnimatePresence  } from 'framer-motion'
 import Swiper from 'react-id-swiper';
 
 import 'swiper/css/swiper.css';
-import "./contentlist.css"
+import './contentlist.css'
 
 
 

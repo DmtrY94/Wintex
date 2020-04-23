@@ -170,11 +170,15 @@ const Hero = () => {
                           willChange: 'background',
                           transition: 'background 0.25s ease-out',
                           ":focus": {
-                            background: 'rgba(155, 202, 221, 0.47)'
+                            border: '3px solid #0B6CFE',
+                            color: 'primary',
+                            background: 0,
+                             
                           },                                
                           ":hover": {
-                            background: 'rgba(155, 202, 221, 0.77)',
-                            boxShadow: '0px 1px 10px rgba(0, 0, 0, 0.05);',                   
+                            border: '3px solid #0B6CFE',
+                            color: 'primary',
+                            background: 0,            
                           },                        
                           
                         }}

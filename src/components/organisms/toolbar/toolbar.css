@@ -1,18 +1,16 @@
 
 
 .toolbar-icon:nth-child(1) {
-    background: no-repeat url(../../../img/1.png) center;
+    background: no-repeat url(../../../img/children.svg) bottom;
 }
 .toolbar-icon:nth-child(2) {
-    background: no-repeat url(../../../img/2.png) center;
-    left: 25%;
+    background: no-repeat url(../../../img/student.svg) bottom;
 }
 .toolbar-icon:nth-child(3) {
-    background: no-repeat url(../../../img/3.png) center;
-    right: 25%;
+    background: no-repeat url(../../../img/adult.svg) bottom;
 }
 .toolbar-icon:nth-child(4) {
-    background: no-repeat url(../../../img/sale.svg) center;
+    background: no-repeat url(../../../img/sale.svg) bottom;
     right: 30px;
 }
 
