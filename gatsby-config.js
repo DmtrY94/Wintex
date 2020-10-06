@@ -1,4 +1,5 @@
-const config = require(`./site-config`)
+const config = require(`./site-config`);
+const languages = require('./src/data/languages');
 
 const activeEnv =
   process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || `development`
@@ -12,8 +13,9 @@ require(`dotenv`).config({
 module.exports = {
   siteMetadata: {
     title: `IntEXchange`,
-    siteUrl: `https://intexchange.education`,
+    siteUrl: `https://intexchange.org/`,
     description: `IntEXchange - Освіта за кордоном для школярів і студентів`,
+    languages
   },
   plugins: [
     {
@@ -40,15 +42,37 @@ module.exports = {
         logo: "./src/favicon.png",
         appName: 'IntEXchange',
         appDescription: 'IntEXchange - Освіта за кордоном для школярів і студентів',
-        background: '#1ABC06',
+        start_url: `/`,
+        background: '#ffffff',
         theme_color: '#1ABC06',
+        display: 'standalone',
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: false,
+          coast: false,
+          favicons: true,
+          firefox: true,
+          yandex: false,
+          windows: false
+        }
       }
     },
     `gatsby-plugin-sitemap`,
-    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: 'gatsby-plugin-i18n',
+      options: {
+        langKeyForNull: 'any',
+        langKeyDefault: languages.defaultLangKey,
+        useLangKeyLayout: true,
+        prefixDefault: false,
+      }
+    }, 
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-catch-links`,
+    `gatsby-plugin-offline`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -61,19 +85,30 @@ module.exports = {
     {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
-        custom: {
-          families: ["Oswald, Fira Sans"],
-          urls: ["/static/fonts/fonts.css"],
+        google: {
+          families: ['Oswald:300,400,500,600,700', 'Fira Sans']
         },
       },
     },
     {
       resolve: `gatsby-wpgraphql-inline-images`,
       options: {
-        wordPressUrl: `https://wintex.local/`,
-        uploadsUrl: `https://wintex.local/wp-content/uploads/`,
+        wordPressUrl: `http://admin.intexchange.education/`,
+        uploadsUrl: `http://admin.intexchange.education/wp-content/uploads/`,
         processPostTypes: ["Page", "Post"],
         graphqlTypeName: 'WORDPRESS',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-26421321-13",
+      },
+    },
+    {
+      resolve: `gatsby-plugin-facebook-pixel`,
+      options: {
+        pixelId: '237424446631315',
       },
     },
     {
@@ -87,8 +122,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        host: `https://intexchange.education`,
-        sitemap: `https://intexchange.education/sitemap.xml`,
+        host: `https://intexchange.org/`,
+        sitemap: `https://intexchange.org/sitemap.xml`,
         resolveEnv: () => activeEnv,
         env: {
           development: {

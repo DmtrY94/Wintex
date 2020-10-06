@@ -36,8 +36,9 @@ return (
     >
         <Styled.h3
             sx={{
-                paddingLeft: ['10vh', '30px', '5vh', '10vh'],
-                margin: '15px 0',
+                paddingLeft: ['5.208vw', '20px', '5vh', '5.208vw'],
+                fontSize: ['1.0416vw', '20px', '20px', '1.0416vw'],
+                margin: '15px 0 0',
                 color: ['white', '#0D2344', 'white']
             }}
         >
@@ -46,7 +47,7 @@ return (
         <div>
         <div
             sx={{
-                paddingLeft: ['10vh', '0', '5vh', '10vh']
+                paddingLeft: ['5.208vw', '20px', '5vh', '5.208vw'],
             }}
         >
             <HorizontalScroller invert sensibility={50}>

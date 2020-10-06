@@ -3,6 +3,7 @@ import React from "react"
 import { jsx } from 'theme-ui'
 import { graphql, useStaticQuery } from "gatsby"
 import { Link } from 'gatsby'
+import { FormattedMessage } from 'react-intl'
 import Sticker from "../../molecules/Sticker"
 import FormModal from '../../modals/FormModal'
 import { motion  } from "framer-motion"
@@ -14,14 +15,21 @@ function MainMenu() {
     return null;
 }
 
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile
+} from "react-device-detect";
 
-
-const Hero = () => {
+const Hero = ({location}) => {
   const data = useStaticQuery(graphql`{
     wordpress {
       pageBy(uri: "main") {
         id
         title
+        uri
+        slug
         PageMain {
           bigtitle
           descr
@@ -36,6 +44,24 @@ const Hero = () => {
           opengraphTitle
           twitterDescription            
           twitterTitle
+          opengraphImage {
+            sourceUrl(size: LARGE)
+            id
+            imageFile {
+              childImageSharp {
+                fluid(maxWidth: 2000, quality: 100) {
+                  aspectRatio
+                  base64
+                  sizes
+                  src
+                  srcSet
+                }
+              }
+            }
+          }
+        }
+        language {
+          slug
         }
       }
     }
@@ -48,19 +74,19 @@ const Hero = () => {
         <div
           sx={{
             position: 'relative',
-            marginTop: '3.5vh',
+            marginTop: '1.0786vw',
             "@media screen and (max-width: 768px)": {
                 marginTop: '4.5vh',
-                marginLeft: '30px',
-                marginRight: '30px',
+                marginLeft: '20px',
+                marginRight: '20px',
             },
           }}
         >
-            <SEO data={data.wordpress.pageBy} />   
+            <SEO data={data.wordpress.pageBy} location={location} />   
             <MainMenu />
                 <div sx={{
                    display: 'block',
-                   padding: ['0 10vh', 0, '0 5vh', '0 10vh']
+                   padding: ['0 5.208vw', 0, '0 5vh', '0 5.208vw']
                 }}>
                   <div sx={{
                     display: 'flex',
@@ -68,22 +94,35 @@ const Hero = () => {
                     position: 'relative',
                     justifyContent: 'space-between'
                   }}>
-
+                   
                     <h1                  
                     sx={{
+                      display: ['block', 'none', 'block'],
                       textTransform: 'uppercase',
                       color: 'white',
                       textShadow: '0px 4px 47px rgba(138, 138, 138, 0.3)',
                       margin: 0,
-                      fontSize: ['calc(16*0.25vw)', '1.55rem', 'calc(16*0.25vw)'],
+                      fontSize: 'calc(16*0.25vw)',
                       fontFamily: 'heading',
-                      width: ['inherit', '95%', 'inherit'],
                       zIndex: 2,
                       
                     }}
                     dangerouslySetInnerHTML={{  __html: data.wordpress.pageBy.PageMain.bigtitle }} >
-                    </h1>                 
-                    <Sticker textcircle={data.wordpress.pageBy.PageMain.textcircle}/>
+                    </h1>                
+                    <h1
+                      sx={{
+                        display: ['none', 'block', 'none'],
+                        textTransform: 'uppercase',
+                        color: 'white',
+                        margin: 0,
+                        fontSize: '1.55rem', 
+                        fontFamily: 'heading',
+                        zIndex: 2,
+                        
+                      }}
+                    >Обучение<br/>и стажировка<br/>за границей</h1>  
+                                
+                    <Sticker lang={data.wordpress.pageBy.language.slug}/>
                   </div>
                   <div sx={{
                     display: 'flex',
@@ -95,7 +134,7 @@ const Hero = () => {
                   }}>
                     <div                 
                     sx={{
-                      width: '41%',   
+                      width: ['41%', '57%', '67%', '43%', '43%', '41%'],   
                       display: ['none', 'none', 'none', 'flex', 'flex'],
                       flexDirection: 'row',
                       alignItems: 'flex-start'                      
@@ -108,11 +147,9 @@ const Hero = () => {
                         <path d="M0.47998 13.9201C0.47998 9.60006 1.09331 6.32006 2.31998 4.08006C3.54665 1.84006 5.57331 0.666727 8.39998 0.560059L9.91998 3.68006C8.31998 3.84006 7.19998 4.61339 6.55998 6.00006C5.91998 7.38673 5.59998 9.62673 5.59998 12.7201H9.83998V21.6801H0.47998V13.9201ZM14.56 13.9201C14.56 9.60006 15.1733 6.32006 16.4 4.08006C17.6266 1.84006 19.6533 0.666727 22.48 0.560059L24 3.68006C22.4 3.84006 21.28 4.61339 20.64 6.00006C20 7.38673 19.68 9.62673 19.68 12.7201H23.92V21.6801H14.56V13.9201Z" fill="white"/>
                         </svg>
                       </div>
-                      <motion.div
-                        initial={{ rotate: 0 }}
-                        animate={{ rotate: 1.3 }}
-                        transition={{ duration: 0.95, delay: 0.9 }}
-
+                      <div
+                        
+                        className="intex-text-descr"
                         sx={{
                           border: '2px solid #fff',
                           padding: '10px 15px',
@@ -120,18 +157,19 @@ const Hero = () => {
                           transform: 'rotate(1.1deg)'  
                         }}
                       >
-                        <p
+                        <div                        
                           sx={{
                             fontFamily: 'heading',  
                             textTransform: 'uppercase',                     
                             color: 'white',
                             fontWeight: '400',
+                            fontSize: ['calc(3.5*0.25vw)', 'calc(3.5*0.25vw)', 'calc(5.5*0.25vw)', 'calc(4.5*0.25vw)', 'calc(3.5*0.25vw)']
                                                     
                           }}
                           dangerouslySetInnerHTML={{  __html: data.wordpress.pageBy.PageMain.descr }}
                         />
                         
-                      </motion.div>
+                      </div>
                       <div
                         sx={{ display: 'flex', transform: 'rotate(180deg)', marginLeft: '10px' }}
                       >
@@ -156,34 +194,32 @@ const Hero = () => {
                           bg: 'white',  
                           border: 0,                                          
                           borderRadius: '100px',
-                          padding: '18px 27px',
+                          padding: ['0.9375vw 1.40625vw', '18px 27px', '18px 27px', '0.9375vw 1.40625vw'],
                           fontFamily: '"Oswald", sans-serif',
                           textTransform: 'uppercase',
                           color: 'primary',
-                          fontSize: '16px',
+                          fontSize: ['0.833vw', '16px', '16px', '0.833vw'],
                           fontWeight: '700',                       
                           cursor: 'pointer',
                           outline: 'none',
                           display: 'flex',
                           alignItems: 'center',                        
                           marginLeft: ['1.7em', 0, '1.7em'],
-                          willChange: 'background',
-                          transition: 'background 0.25s ease-out',
+                          willChange: 'transform',
+                          transition: 'transform 0.2s ease-out, box-shadow 0.35s ease-out',
                           ":focus": {
-                            border: '3px solid #0B6CFE',
-                            color: 'primary',
-                            background: 0,
-                             
+                              transform: 'scale(1.07)',   
                           },                                
-                          ":hover": {
-                            border: '3px solid #0B6CFE',
-                            color: 'primary',
-                            background: 0,            
-                          },                        
+                          ":hover": {   
+                              transform: 'scale(1.07)',                 
+                          }, 
+                          ":active": {
+                              transform: 'scale(.94)',
+                          }             
                           
                         }}
                       >
-                        Про нас
+                        <FormattedMessage id="buttonpronas" />
                         <span
                           sx={{
                             display: 'flex',
@@ -217,8 +253,8 @@ const Hero = () => {
               
               <Rover 
                 sx={{
-                  width: ['257px', '102px', '257px'],
-                  height: ['218px', '86px', '218px']
+                  width: ['13.3854vw', '140px', '13.3854vw'],
+                  height: ['11.3541vw', '118px', '11.3541vw']
                 }}
               />
             </motion.div>

@@ -1,12 +1,14 @@
 /** @jsx jsx */
-import React from 'react'
+import React, {useState} from 'react'
 import { jsx, Styled } from 'theme-ui'
 import { graphql, Link } from 'gatsby'
+import { motion } from "framer-motion"
+import { FormattedMessage } from 'react-intl'
+import Swiper from 'react-id-swiper';
 import Layout from '../components/particles/Layout'
 import SEO from "../components/particles/SEO"
 import CatListEntry from '../components/organisms/category/CatListEntry'
-import Swiper from 'react-id-swiper';
-
+import ButtonBack from '../components/molecules/ButtonBack'
 
 import 'swiper/css/swiper.css';
 
@@ -23,15 +25,33 @@ const CreateCategory = props => {
   
   } = props
 
+ 
+
+
+  const [swiper, updateSwiper] = useState(null);
+    const goNext = () => {
+      if (swiper !== null) {
+        swiper.slideNext();
+      }
+    };
+    const goPrev = () => {
+      if (swiper !== null) {
+        swiper.slidePrev();
+      }
+    }
 
   const params = {
     containerClass: 'container-swiper-list',
     spaceBetween: 30,
-    slidesPerView: 3,
-    slidesPerGroup: 3,
+    slidesPerView: 4,
+    mousewheel: true,
     breakpoints: {
+      1920: {
+        slidesPerView: 4,
+        spaceBetween: 40
+      },
       1024: {
-        slidesPerView: 2,
+        slidesPerView: 3,
         spaceBetween: 40
       },
       768: {
@@ -51,62 +71,188 @@ const CreateCategory = props => {
 
 
   return (
-    <Layout>
-      <SEO data={props.pageContext} /> 
-      <div
-        sx={{
-          marginTop: '6vh',
-          marginBottom: '12vh',
+    <>
+      <Layout location={props.location}>
+      
+        <SEO data={props.pageContext} /> 
+        <div
+          sx={{
+          marginTop: ['3.1468vw', '6vh', '6vh', '3.1468vw'],
           position: 'relative',
           height: '100%'
         }}
-      >
-        <div
-          
         >
-          <Styled.h1
+          <div
             sx={{
-              color: 'white',
-              paddingLeft: ['10vh', '30px', '5vh', '10vh'],
-              margin: '15px 0',
-              marginBottom: '4.51vh',
-              textTransform: 'uppercase',
-              fontSize: ['calc(16*0.25vw)', '1.75rem', 'calc(16*0.25vw)'],
-            }}
-          >{category.name}</Styled.h1>
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'flex-start',
+            padding: ['0 5.208vw', '0 20px', '0 5vh', '0 5.208vw'],
+            zIndex: '2',
+            position: 'relative'
+          }}
+          >
+            <div sx={{ marginTop: ['0.67vw', '1.05vw', '0.67vw' ]  }}>  
+              <ButtonBack />   
+            </div>
+            <Styled.h1  
+              sx={{
+                color: 'white',
+                textTransform: 'uppercase',
+                fontSize: ['calc(16*0.25vw)', '1.75rem', 'calc(16*0.25vw)'],
+              }}
+            >
+              {category.name}
+            </Styled.h1>
           
-        </div>
+          </div>
 
-        <div
-
-        >     
-                <div
-                sx={{
-                    marginTop: '4vh',
+          <div>     
+            <div
+              sx={{
+                    marginTop: ['2.0979vw', '4vh', '4vh', '2.0979vw'],
                     borderTop: '2px solid rgba(0, 0, 0, 0.035)'
                 }}
             >
                 
                 
-                <div >
-                    
-                    
-                <Swiper {...params}>
+              <div 
+                sx={{ 
+                    position: 'relative',
+                    marginTop: [0, '10vh', 0],
+                    marginBottom: 0,
+                }}
+              >
                   
-                    {category.forChildrens.nodes &&
+                <button 
+                  onClick={goPrev}
+                  sx={{
+                                    position: 'absolute',                         
+                                    top: '50%',
+                                    width: ['2.6041vw','50px', '50px', '2.6041vw'],
+                                    height: ['2.6041vw','50px', '50px', '2.6041vw'],
+                                    borderRadius: '100%',
+                                    transform: 'translateY(-50%)',
+                                    left: ['7vh', '20px', '7vh'],
+                                    border: 0,
+                                    bg: 'primary',
+                                    outline: 'none',
+                                    color: 'white',
+                                    display: ['flex', 'none', 'flex'],
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    cursor: 'pointer',
+                                    padding: 0,
+                                    zIndex: '7',
+                                    boxShadow: '0px 10px 30px rgba(11,128,254,0.71)',
+                                    willChange: 'box-shadow',
+                                    transition: 'transform 0.25s ease-out, box-shadow 0.35s ease-out',
+                                    ":focus": {
+                                        background: 'linear-gradient(39.9deg, #0B6CFE 22.83%, #458FFF 79.5%)',
+                                        boxShadow: '0px 10px 30px rgba(11, 128, 254, 0.71)',                                         
+                                    },                                
+                                    ":hover": {   
+                                        background: 'linear-gradient(39.9deg, #0B6CFE 22.83%, #458FFF 79.5%)',                       
+                                        boxShadow: '0px 10px 30px rgba(11, 128, 254, 0.71)',                
+                                    }, 
+                                    ":active": {
+                                        transform: 'scale(.98)',
+                                    }
+                                }}
+                >
+                  <span
+                    sx={{
+                                        display: 'flex',
+                                        transform: 'rotate(180deg)'
+                                    }}
+                  >
+                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fillRule="evenodd" clipRule="evenodd" d="M0.633174 0.993821C0.24265 1.38435 0.24265 2.01751 0.633174 2.40803L5.89975 7.67461L0.633174 12.9412C0.24265 13.3317 0.24265 13.9649 0.633174 14.3554C1.0237 14.7459 1.65686 14.7459 2.04739 14.3554L8.02107 8.38172C8.4116 7.99119 8.4116 7.35803 8.02107 6.96751L2.04739 0.993821C1.65686 0.603297 1.0237 0.603297 0.633174 0.993821Z" fill="currentColor" />
+                    </svg>
+                  </span>
+                </button>
+                <button 
+                  onClick={goNext}
+                  sx={{
+                                    position: 'absolute',                         
+                                    top: '50%',
+                                    width: ['2.6041vw','50px', '50px', '2.6041vw'],
+                                    height: ['2.6041vw','50px', '50px', '2.6041vw'],
+                                    borderRadius: '100%',
+                                    transform: 'translateY(-50%)',
+                                    right: ['7vh', '20px', '7vh'],
+                                    border: 0,
+                                    bg: 'primary',
+                                    outline: 'none',                      
+                                    color: 'white',
+                                    display: ['flex', 'none', 'flex'],
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    cursor: 'pointer',
+                                    padding: 0,
+                                    zIndex: '7',
+                                    boxShadow: '0px 10px 30px rgba(11,128,254,0.71)',
+                                    willChange: 'box-shadow',
+                                    transition: 'transform 0.25s ease-out, box-shadow 0.35s ease-out',
+                                    ":focus": {
+                                        background: 'linear-gradient(39.9deg, #0B6CFE 22.83%, #458FFF 79.5%)',
+                                        boxShadow: '0px 10px 30px rgba(11, 128, 254, 0.71)',                                         
+                                    },                                
+                                    ":hover": {   
+                                        background: 'linear-gradient(39.9deg, #0B6CFE 22.83%, #458FFF 79.5%)',                       
+                                        boxShadow: '0px 10px 30px rgba(11, 128, 254, 0.71)',                
+                                    }, 
+                                    ":active": {
+                                        transform: 'scale(.98)',
+                                    }
+                                }}
+                >                           
+                  <span
+                    sx={{
+                                        display: 'flex',
+                                        
+                                    }}
+                  >
+                    <svg width="9" height="15" viewBox="0 0 9 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fillRule="evenodd" clipRule="evenodd" d="M0.633174 0.993821C0.24265 1.38435 0.24265 2.01751 0.633174 2.40803L5.89975 7.67461L0.633174 12.9412C0.24265 13.3317 0.24265 13.9649 0.633174 14.3554C1.0237 14.7459 1.65686 14.7459 2.04739 14.3554L8.02107 8.38172C8.4116 7.99119 8.4116 7.35803 8.02107 6.96751L2.04739 0.993821C1.65686 0.603297 1.0237 0.603297 0.633174 0.993821Z" fill="currentColor" />
+                    </svg>
+                  </span>
+                </button>
+                    
+                <Swiper getSwiper={updateSwiper} {...params}>
+                  
+                  {category.forChildrens.nodes &&
                     category.forChildrens.nodes.map(node => <div><CatListEntry node={node} key={node.id} /></div>)}
                   
                 </Swiper>   
 
 
                    
-                </div>
+              </div>
                 
             </div>  
-            </div>   
+          </div>   
         
-      </div>
-    </Layout>
+        </div>
+
+      </Layout>
+      <motion.div
+        initial={{ height: '100%' }}
+        animate={{ height: '70%' }} 
+        transition={{ duration: 0.7 }} 
+        sx={{
+        position: 'absolute',
+        width: '100%',
+        height: '70%',
+        background: 'linear-gradient(354.04deg, #8FD300 33.78%, #00B707 96.12%)',
+        left: 0,
+        top: ['-3.7em', '-5.7em', '-5.7em' ],
+        zIndex: '0',
+        transform: 'skewY(-15deg)',
+        display: ['none', 'block', 'none']
+      }}
+      />
+    </>
   )
 }
 

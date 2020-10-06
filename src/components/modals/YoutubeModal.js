@@ -72,7 +72,7 @@ class YoutubeModal extends Component {
                     display: 'flex',
                     flexDirection: 'row',
                     alignItems: 'center',
-                    padding: '13px 15px',
+                    padding: ['0.6770vw 0.7812vw', '13px 15px', '13px 15px', '0.6770vw 0.7812vw'],
                     borderRadius: '10px',
                     width: ['initial', '100%', 'initial'],
                     backgroundColor: 'rgba(255, 255, 255, .05)',
@@ -110,8 +110,8 @@ class YoutubeModal extends Component {
                         sx={{
                             margin: '3px',
                             display: 'block',
-                            width: '60px',
-                            height: '60px',
+                            width: ['3.125vw', '60px', '60px', '3.125vw'],
+                            height: ['3.125vw', '60px', '60px', '3.125vw'],
                             borderRadius: '100%',
                             overflow: 'hidden',
                             position: 'relative'
@@ -134,7 +134,8 @@ class YoutubeModal extends Component {
                         fontWeight: '500',
                         textTransform: 'uppercase',
                         marginLeft: '15px',
-                        color: 'white'
+                        color: 'white',
+                        fontSize: ['0.8333vw', '16px', '16px', '0.8333vw']
                     }}
                 >Проморолик <br/>{school}</div>          
             </div>

@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import React, { Component, Fragment } from 'react'
 import { jsx, Styled } from 'theme-ui'
+import { FormattedMessage } from 'react-intl'
+import Modal from 'react-modal'
 import { graphql, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
@@ -10,70 +12,82 @@ import PropTypes from 'prop-types'
 
 import '../../particles/all.sass'
 
+Modal.setAppElement(`#___gatsby`)
+const modalStyles = {
+    overlay: {
+      backgroundColor: "rgba(185, 185, 185, 0.79)",
+    },
+    content: {
+      position: 'fixed',
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      border: '0px',
+      background: '0',
+      overflow: 'hidden',
+      OverflowScrolling: 'touch',
+      borderRadius: '10px',
+      outline: 'none',
+      padding: '0',
+      transform: 'translate(-50%, -50%)',
+      width: '100%',
+      height: 'auto',
+      maxWidth: '1280px',
+        
+    },
+  }
+
 
   class Lightbox extends Component {
     state = {
-      showLightbox: false,
+      modalIsOpen: false,
       selectedImage: 0,
     }
-  
+
     componentDidMount = () => {
       window.addEventListener('keyup', this.handleKeyUp, false)
     }
-  
+
     componentWillUnmount = () => {
       window.removeEventListener('keyup', this.handleKeyUp, false)
     }
-  
+    
     handleClick = (e, index) => {
-      e.preventDefault()
-      this.setState({ showLightbox: !this.state.showLightbox, selectedImage: index })
+        e.preventDefault()
+        this.setState({ modalIsOpen: !this.state.modalIsOpen, selectedImage: index })
     }
-  
-    closeModal = () => {
-      this.setState({ showLightbox: false })
-    }
-  
-    goBack = () => {
-      this.setState({ selectedImage: this.state.selectedImage - 1 })
-    }
-  
-    goForward = () => {
-      this.setState({ selectedImage: this.state.selectedImage + 1 })
-    }
-  
-    handleKeyUp = e => {
-      e.preventDefault()
-      const { keyCode } = e
-      if (this.state.showLightbox) {
-        if (keyCode === 37) {
-          // Left Arrow Key
-          if (this.state.selectedImage > 0) {
-            this.setState({ selectedImage: this.state.selectedImage - 1 })
-          }
-        }
-        if (keyCode === 39) {
-          // Right Arrow Key
-          if (this.state.selectedImage < this.props.image.length - 1) {
-            this.setState({ selectedImage: this.state.selectedImage + 1 })
-          }
-        }
-        if (keyCode === 27) {
-          // Escape key
-          this.setState({ showLightbox: false })
-        }
+
+    openModal = () => {
+        this.setState({ modalIsOpen: true })
       }
+
+    closeModal = () => {
+      this.setState({ modalIsOpen: false })
     }
+
+    goBack = () => {
+        this.setState({ selectedImage: this.state.selectedImage - 1 })
+      }
+    
+    goForward = () => {
+        this.setState({ selectedImage: this.state.selectedImage + 1 })
+    }
+
+    selectImage = (e, index) => {
+      e.preventDefault()
+      this.setState({ selectedImage: index })
+  }
+
   
     render() {
       const { image } = this.props
       
-      console.log(image)
-      
-      const { showLightbox, selectedImage } = this.state
+      const { modalIsOpen, selectedImage } = this.state
+      const modalCloseTimeout = 300
 
       if (!image) {
-        return (<Styled.p sx={{textAlign: 'center', color: 'white', marginTop: '2em', marginBottom: ['initial', '3em', 'initial'], fontSize: ['20px', '14px', '20px']}}>Тут скоро будуть фотографії з наших поїздок...</Styled.p>)
+        return (<Styled.p sx={{textAlign: 'center', color: 'white', marginTop: '2em', marginBottom: ['initial', '3em', 'initial'], fontSize: ['20px', '14px', '20px']}}><FormattedMessage id="photonon" /></Styled.p>)
       }
 
       if (!image.length) {
@@ -84,12 +98,12 @@ import '../../particles/all.sass'
         <Fragment>
           <div
             sx={{
-                padding: ['0 40px 40px 40px', '0 30px 30px 30px', '0 40px 40px 40px'],
+                padding: ['0 2.0833vw 2.0833vw 2.0833vw', '0 2.0833vw 2.0833vw 2.0833vw', '0 2.0833vw 2.0833vw 2.0833vw'],
                 position: 'relative',
-                overflowX: ['initial', 'scroll', 'initial'],
-                overflowY: ['initial', 'hidden', 'initial'],
-                zIndex: ['initial', '999', 'initial'],
-                minHeight: ['initial', '20vh', 'initial'],
+                overflowX: ['initial', 'scroll', 'scroll', 'initial'],
+                overflowY: ['initial', 'hidden', 'hidden', 'initial'],
+                zIndex: ['initial', '999', '999', 'initial'],
+                minHeight: ['initial', '20vh', '20vh', 'initial'],
                 "::-webkit-scrollbar": { 
                   width: 0,
                 },
@@ -99,21 +113,22 @@ import '../../particles/all.sass'
             <div
                 sx={{
                     display: 'flex',
-                    flexFlow: ['row wrap', 'initial', 'row wrap'],
+                    flexFlow: ['row wrap', 'nowrap', 'nowrap', 'row wrap'],
                     justifyContent: 'flex-start',
-                    position: ['initial', 'absolute', 'initial']
+                    position: ['initial', 'absolute', 'absolute', 'initial']
                 }}
             >
             {image.map((images, i) => (
               <GalleryItem key={images.id}
+              onClick={e => this.handleClick(e, i)}   
                 
                 sx={{
                   display: 'block',
-                  height: ['27.8vh', '14.8vh', '27.8vh'],
-                  flexBasis: ['33.3%', '55.5%', '33.3%'],
+                  height: ['14.0625vw', '14.8vh', '14.8vh', '14.0625vw'],
+                  flexBasis: ['33.3%', '55.5%', '55.5%', '33.3%'],
                   position: 'relative',
-                  padding: ['10px', '0 10px 0 0', '10px'],
-                  width: ['100%', '200px', '100%']                            
+                  padding: ['0.5208vw', '0 10px 0 0', '0 10px 0 0', '0.5208vw'],
+                  width: ['100%', '200px', '200px', '100%']                            
               }}
               >
                 <a href={images.imageFile.childImageSharp.fluid.src} alt="Car Image" onClick={e => this.handleClick(e, i)}
@@ -122,7 +137,7 @@ import '../../particles/all.sass'
                     width: '100%',
                     height: '100%',
                     overflow: 'hidden',
-                    borderRadius: '10px'
+                    borderRadius: ['0.5208vw', '10px', '10px', '0.5208vw']
                   }}
                 >
                   <StyledImg fluid={images.imageFile.childImageSharp.fluid}
@@ -134,8 +149,15 @@ import '../../particles/all.sass'
           </div> 
         </div>
   
-          <LightboxModal visible={showLightbox} onKeyUp={e => this.handleKeyDown(e)} >
-            <LightboxContent>
+        <Modal
+             isOpen={modalIsOpen}
+             style={modalStyles}
+             onRequestClose={this.closeModal}
+             closeTimeoutMS={modalCloseTimeout}
+
+             onKeyUp={e => this.handleKeyDown(e)}
+          >   
+            <Styled.root>
               <Img 
                 sx={{overflow: 'hidden', borderRadius: '10px'}}
               fluid={image[selectedImage].imageFile.childImageSharp.fluid} />
@@ -156,11 +178,6 @@ import '../../particles/all.sass'
                   right: '3.5vh'
                 }}
               >               
-                <Button onClick={this.closeModal}>
-                  <svg width="16" height="16" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" clipRule="evenodd" d="M2.6667 0.407868C2.27618 0.017344 1.64301 0.017344 1.25249 0.407868C0.861964 0.798392 0.861964 1.43156 1.25249 1.82208L7.54539 8.11498L1.25249 14.4079C0.861964 14.7984 0.861964 15.4316 1.25249 15.8221C1.64301 16.2126 2.27618 16.2126 2.6667 15.8221L8.9596 9.5292L15.2525 15.8221C15.643 16.2126 16.2762 16.2126 16.6667 15.8221C17.0572 15.4316 17.0572 14.7984 16.6667 14.4079L10.3738 8.11498L16.6667 1.8221C17.0572 1.43157 17.0572 0.798408 16.6667 0.407883C16.2762 0.0173588 15.643 0.0173587 15.2525 0.407883L8.9596 6.70077L2.6667 0.407868Z" fill="white"/>
-                  </svg>
-                </Button>
               </div>                             
               <Controls>
                 <LeftRight>
@@ -171,7 +188,7 @@ import '../../particles/all.sass'
                       }}
                     >
                     <svg width="14" height="30" viewBox="0 0 19 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M18.7176 0.303525C19.1022 0.699834 19.0928 1.33293 18.6965 1.71758L2.4358 17.5L18.6965 33.2824C19.0928 33.6671 19.1022 34.3002 18.7176 34.6965C18.3329 35.0928 17.6998 35.1022 17.3035 34.7176L0.303525 18.2176C0.109497 18.0293 0 17.7704 0 17.5C0 17.2296 0.109497 16.9707 0.303525 16.7824L17.3035 0.28242C17.6998 -0.102233 18.3329 -0.0927836 18.7176 0.303525Z" fill="white"/>
+                    <path fillRule="evenodd" clipRule="evenodd" d="M18.7176 0.303525C19.1022 0.699834 19.0928 1.33293 18.6965 1.71758L2.4358 17.5L18.6965 33.2824C19.0928 33.6671 19.1022 34.3002 18.7176 34.6965C18.3329 35.0928 17.6998 35.1022 17.3035 34.7176L0.303525 18.2176C0.109497 18.0293 0 17.7704 0 17.5C0 17.2296 0.109497 16.9707 0.303525 16.7824L17.3035 0.28242C17.6998 -0.102233 18.3329 -0.0927836 18.7176 0.303525Z" fill="currentColor"/>
                     </svg>
                     </span>
                   </Button>
@@ -184,14 +201,14 @@ import '../../particles/all.sass'
                       }}
                     >
                     <svg width="14" height="30" viewBox="0 0 19 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M18.7176 0.303525C19.1022 0.699834 19.0928 1.33293 18.6965 1.71758L2.4358 17.5L18.6965 33.2824C19.0928 33.6671 19.1022 34.3002 18.7176 34.6965C18.3329 35.0928 17.6998 35.1022 17.3035 34.7176L0.303525 18.2176C0.109497 18.0293 0 17.7704 0 17.5C0 17.2296 0.109497 16.9707 0.303525 16.7824L17.3035 0.28242C17.6998 -0.102233 18.3329 -0.0927836 18.7176 0.303525Z" fill="white"/>
+                    <path fillRule="evenodd" clipRule="evenodd" d="M18.7176 0.303525C19.1022 0.699834 19.0928 1.33293 18.6965 1.71758L2.4358 17.5L18.6965 33.2824C19.0928 33.6671 19.1022 34.3002 18.7176 34.6965C18.3329 35.0928 17.6998 35.1022 17.3035 34.7176L0.303525 18.2176C0.109497 18.0293 0 17.7704 0 17.5C0 17.2296 0.109497 16.9707 0.303525 16.7824L17.3035 0.28242C17.6998 -0.102233 18.3329 -0.0927836 18.7176 0.303525Z" fill="currentColor"/>
                     </svg>
                     </span>
                   </Button>
                 </LeftRight>
               </Controls>
-            </LightboxContent>
-          </LightboxModal>
+              </Styled.root>
+              </Modal>
         </Fragment>
       )
     }
@@ -226,7 +243,8 @@ import '../../particles/all.sass'
   
   const Button = styled.button`
     cursor: pointer;
-    background: none;
+    background-color: rgba(0, 0, 0, 0.25);
+    color: #fff;
     border: 0;
     width: 50px;
     height: 50px;
@@ -235,7 +253,7 @@ import '../../particles/all.sass'
     align-items: center;
     padding: 0;
     outline: none;
-    opacity: 0.65;
+    border-radius: 32px;
     transition: opacity 0.25s ease-out;
     &:hover {
       opacity: 1;
@@ -273,7 +291,7 @@ import '../../particles/all.sass'
   
   const LeftRight = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     button:first-child {
       margin-right: 10px;
     }

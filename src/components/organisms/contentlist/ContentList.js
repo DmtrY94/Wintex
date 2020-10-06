@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import React, {useState} from 'react'
-import { Link } from 'gatsby'
+import { Link , graphql, useStaticQuery } from 'gatsby'
 import { jsx, Styled } from 'theme-ui'
-import { graphql, useStaticQuery } from 'gatsby'
-import FluidImage from '../../molecules/FluidImage'
+
 import { motion, AnimatePresence  } from 'framer-motion'
 import Swiper from 'react-id-swiper';
+import FluidImage from '../../molecules/FluidImage'
 
 import 'swiper/css/swiper.css';
 import './contentlist.css'
@@ -41,146 +41,25 @@ const stagger = {
 
 
 
+const ContentList = ({ title, uri, featuredImage, PostTypeForChildrenFields, categories, slug }) => {
 
-const ContentList = () => {
-
-    const params = {
-        containerClass: 'container-swiper-list',
-        spaceBetween: 40,
-        slidesPerView: 5,
-        mousewheel: true,
-        breakpoints: {
-          1920: {
-            slidesPerView: 5,
-            spaceBetween: 40
-          },     
-          1600: {
-            slidesPerView: 4,
-            spaceBetween: 40
-          },  
-          1280: {
-            slidesPerView: 4,
-            spaceBetween: 40
-          },
-          1160: {
-            slidesPerView: 3,
-            spaceBetween: 40
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 30
-          },
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20
-          },
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 25
-          }
-        }
-      }
    
 
-    
 
-    const data = useStaticQuery(graphql`{
-        wordpress {
-            forChildrens(where: {orderby: {field: MENU_ORDER, order: ASC}}) {
-              nodes {
-                title
-                uri
-                id
-                PostTypeForChildrenFields {
-                  time
-                  age
-                  school
-                  flag  
-                }
-                featuredImage {
-                    sourceUrl(size: LARGE)
-                    altText
-                    imageFile {
-                        childImageSharp {
-                            fluid(maxWidth: 2500) {
-                                aspectRatio
-                                base64
-                                sizes
-                                src
-                                srcSet
-                            }
-                        }
-                    }
-                }
-                categories {
-                    nodes {
-                      slug
-                      name
-                      id
-                    }
-                }
-              }
-            }
-        }
-    }
-`)
-
-
-    
+   
 
     return (
-        <AnimatePresence>
-        <motion.div
-            exit={{ opacity: 0 }}
-            initial='initial'
-            animate='animate'
-        >     
-                <div
-                sx={{
-                    borderTop: '2px solid rgba(0, 0, 0, 0.035)',
-                }}
-                >
-                    
-                        <Styled.h3
-                        sx={{
-                            paddingLeft: ['10vh', '30px', '5vh', '10vh'],
-                            margin: '20px 0'
-                        }}
-                        >
-                        Актуальні програми
-                        </Styled.h3>
-                        
-               
-                <div>
-                <motion.div variants={stagger} >
-                    
-                    <Swiper 
-                        sx={{
-                            marginLeft: ['10vh', '30px', '5vh', '10vh'],
-                            marginRight: ['calc(10vh - 4.5vh)', 'calc(30px - 4.5vh)', 'calc(10vh - 4.5vh)'],
-                            marginBottom: '2vh',
-                        }}
-                    {...params}>
-
-                        {data.wordpress.forChildrens.nodes.map((node) => {
-
-                            const featuredImage = node.featuredImage                       
-                            const categories = node.categories
-
-
-                            return (
-
-                                
-
-                                <motion.div 
+      
+                       
+      <motion.div 
                               
 
 
-                                    variants={fadeInUp}                                  
-                                    className="Block" key={node.id}
-                                    whileHover={{ y: -20 }}
-                                    whileTap={{ scale: 1.1, zIndex: 999, }}
-                                sx={{
+        variants={fadeInUp}                                  
+        className="Block" 
+        whileHover={{ y: -20 }}
+        whileTap={{ scale: 1.1, zIndex: 999, }}
+        sx={{
                                     zIndex: 10,                                  
                                     willChange: "transform",
                                     transition: "transform 0.25s ease-out",
@@ -192,26 +71,27 @@ const ContentList = () => {
                                         transform: "translateY(-10px) scale(1.04)",                     
                                     },                                                                                              
                                 }}
-
-
-                                >
+      >
                                     
                                     
                                     
-                                    
+        <Link 
+                                        
+          to={`/${uri}`}
+        >
                                     
                                         
 
-                                    <div  
+          <div  
                                     
                                     
 
-                                    sx={{
-                                        cursor: 'grab',                                     
-                                        height: ['25vh', '30vh', '25vh'],                       
+            sx={{
+                                        cursor: 'pointer',                                     
+                                        height: ['18.3567vw', '40vh', '40vh', '18.3567vw'],                       
                                         backgroundSize: 'cover',
                                         position: 'relative',
-                                        borderRadius: '8px',
+                                        borderRadius: ['0.78125vw', '15px', '15px', '0.78125vw'],
                                         bg: 'background',                                    
                                         boxShadow: '0px 14px 25px rgba(0, 41, 102, 0.3)',
                                         display: 'flex',
@@ -223,14 +103,14 @@ const ContentList = () => {
                                         ":hover": {                                       
                                             boxShadow: '0px 14px 25px rgba(0, 41, 102, 0.4)',                                                                  
                                         },                                                                         
-                                    }}                               
-                                    >
+                                    }}
+          >
                                         
-                                        <motion.div
-                                            initial={{ scale: 1.3 }}
-                                            animate={{ scale: 1 }}
-                                            transition={{ delay: 0.4 }}
-                                            sx={{
+            <motion.div
+              initial={{ scale: 1.3 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.4 }}
+              sx={{
                                                 position: 'absolute !important',
                                                 left: '0',
                                                 right: '0',
@@ -238,12 +118,11 @@ const ContentList = () => {
                                                 bottom: '0',
                                                 zIndex: '1',
                                             }}
-
-                                        >
+            >
                                        
-                                        <FluidImage                           
-                                            image={featuredImage} 
-                                            sx={{
+              <FluidImage                           
+                image={featuredImage} 
+                sx={{
                                                 position: 'absolute !important',
                                                 left: '0',
                                                 right: '0',
@@ -255,189 +134,165 @@ const ContentList = () => {
                                                     width: '100%',
                                                     height: '100%',
                                                     position: 'absolute',
-                                                    background: 'linear-gradient(3.01deg, #000000 -42.6%, rgba(0, 0, 0, 0) 66.89%)',
+                                                    background: 'linear-gradient(3.01deg, #000000 -22.6%, rgba(0, 0, 0, 0) 66.89%)',
                                                     zIndex: '2'
                                                 },
                                             }}
-
-                                        /> 
-                                        </motion.div> 
+              /> 
+            </motion.div> 
                                                                      
-                                        <div
-                                            sx={{
+            <div
+              sx={{
                                                 display: 'flex',
                                                 flexDirection: 'row',
                                                 justifyContent: 'space-between',
-                                                padding: '18px',
+                                                padding: ['0.9375vw 0.9375vw', '18px 18px', '18px 18px', '0.9375vw 0.9375vw'],
                                                 zIndex: '2',
                                                 alignItems: 'center'
                                             }}
-                                        >
-                                        <div
-                                                sx={{
+            >
+              <div
+                sx={{
                                                     fontFamily: 'heading',
-                                                    fontWeight: '400',
+                                                    fontWeight: '700',
                                                     textTransform: 'uppercase',
-                                                    fontSize: 12,
+                                                    fontSize: ['0.625vw', '12px', '12px', '0.625vw'],
                                                     color: 'white',
-                                                    padding: '4px 5px 4px 5px',
-                                                    borderRadius: '5px',
-                                                    bg: 'primary',
-                                                    boxShadow: '0 0 0px 1px #4891FE'
-                                                
+                                                    padding: ['0.2083vw 0.5208vw 0.2083vw 0.5208vw', '4px 10px 4px 10px', '4px 10px 4px 10px', '0.2083vw 0.5208vw 0.2083vw 0.5208vw'],
+                                                    borderRadius: '32px',
+                                                    background: 'linear-gradient(39.9deg,#0B6CFE 22.83%,#458FFF 79.5%)', 
+                                                    letterSpacing: '0.018rem'                                                                                   
                                                 }}
-                                        > {node.PostTypeForChildrenFields.school}</div>
-                                        <div
-                                            sx={{
+              > 
+                {' '}
+                {PostTypeForChildrenFields.school}
+              </div>
+              <div
+                sx={{
                                                 fontFamily: '"Fira Sans", sans-serif',                                              
                                                 fontWeight: '300',
                                                 color: 'white',                                          
                                                 fontSize: '14px' 
                                             }}
-                                        ><div 
+              >
+                <div 
                                        
-                                        className={node.PostTypeForChildrenFields.flag}
-                                            sx={{ margin: 0}}
-                                        ></div></div>
-                                        </div>
-                                        <div
-                                            sx={{
+                  className={PostTypeForChildrenFields.flag}
+                  sx={{ margin: 0}}
+                />
+              </div>
+            </div>
+            <div
+              sx={{
                                                 display: 'flex',
                                                 alignItems: 'flex-end',
                                                 flexGrow: '1',
-                                                padding: '18px',
+                                                padding: ['0.2604vw 0.9375vw', '5px 18px', '5px 18px', '0.2604vw 0.9375vw'],
                                                 color: 'white',
                                                 fontFamily: '"Fira Sans", sans-serif',                                              
                                                 fontWeight: '300',
-                                                fontSize: '14px',
-                                                zIndex: '2'                            
+                                                fontSize: ['0.7291vw', '14px', '14px', '0.7291vw'],
+                                                zIndex: '2',
+                                                                           
                                             }}
-                                        >
-                                            <div
-                                                sx={{
-                                                    borderTop: '1px solid rgba(255, 255, 255, 0.2)',
-                                                    paddingTop: '10px',
+            >
+              <div
+                sx={{
+                                                    borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
+                                                    paddingBottom: '10px',
                                                     width: '100%',
                                                     display: 'flex',
                                                     flexDirection: 'row',
                                                     justifyContent: 'space-between',
                                                     alignItems: 'center'
                                                 }}
-                                            >
-                                                <div>{node.PostTypeForChildrenFields.age}</div>
-                                                <div
-                                                    sx={{ display: 'flex'}}
-                                                >
-                                                   {categories.nodes.map(cat => (
+              >
+                <div>{PostTypeForChildrenFields.age}</div>
+                <div
+                  sx={{ display: 'flex'}}
+                >
+                  {categories.nodes.map(cat => (
                             
-                                                        <Categories key={cat.id} {...cat} />
+                    <Categories key={cat.id} {...cat} />
                                                     
                                                         
                                                     ))}
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <Link 
-                                        
-                                        to={`/for-childrens/${node.uri}`}
-                                    >
-                                    <motion.div
-                                        initial={{ opacity: 0, y: -40}}
-                                        animate={{ opacity: 1, y: 0}}
+                </div>
+              </div>
+            </div>
+            <motion.div
+              initial={{ opacity: 0, y: -40}}
+              animate={{ opacity: 1, y: 0}}
                                        
-                                        transition={{ duration: 0.5, delay: 0.8}}    
-                                        sx={{                                                                
-                                            margin: 0,
-                                            bg: 'white',
-                                            padding: '22px 18px 12px 18px',
-                                            marginTop: '-5px',
-                                            marginBottom: '20px',
-                                            borderBottomLeftRadius: '10px',
-                                            borderBottomRightRadius: '10px',
+              transition={{ duration: 0.5, delay: 0.8}}    
+              sx={{                                                                
+                                            margin: 0,                                                                                  
                                             display: 'flex',
                                             flexDirection: 'row',
                                             alignItems: 'center',
-                                            justifyContent: 'space-between',
-                                            boxShadow: '0px 14px 25px rgba(0, 41, 102, 0.07)',
-                                            willChange: "transform, box-shadow",
-                                            transition: "transform 0.25s ease-out, box-shadow 0.25s ease-out",                                                                                
-                                            ":hover>div": {                                       
-                                                color: 'primary',                       
-                                            },                                      
-                                            ":hover>span": {                                       
-                                                transform: 'rotate(-90deg) translateX(10px)'                       
-                                            },
-                                            ":hover": {                                       
-                                                boxShadow: '0px 4px 40px rgba(255, 255, 255, 0.8)',                       
-                                            },                                                         
+                                            justifyContent: 'space-between', 
+                                            zIndex: '3', 
+                                            padding: ['0.2604vw 0.9375vw 0.9375vw 0.9375vw', '5px 18px 18px 18px', '5px 18px 18px 18px', '0.2604vw 0.9375vw 0.9375vw 0.9375vw']                                               
                                         }}
-                                    >
-                                        <div
-                                            sx={{
+            >
+              <div
+                sx={{
                                                 textTransform: 'uppercase',
-                                                color: '#000',                  
+                                                color: 'white',                  
                                                 maxWidth: '85%',
-                                                fontSize: '1rem',
-                                                lineHeight: '24px',
+                                                fontSize: ['0.9375vw', '1rem', '1rem', '0.9375vw'],
+                                                lineHeight: '1.4',
                                                 fontFamily: 'heading',
-                                                fontWeight: 'bold'                                                                                                                       
+                                                fontWeight: '500'                                                                                                                       
                                             }}
-                                            dangerouslySetInnerHTML={{ __html: node.title }} 
-                                        >
-                                        
-                                        </div>
-                                        <span
-                                            sx={{
+                dangerouslySetInnerHTML={{ __html: title }}
+              />
+              <span
+                sx={{
                                                 transform: 'rotate(-45deg)',
                                                 willChange: "transform",
                                                 transition: "transform 0.25s ease-out",
                                             }}
-                                        >
-                                            <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fillRule="evenodd" clipRule="evenodd" d="M21.6568 10.0711L13.2928 1.70706L14.707 0.292847L23.8492 9.43498L23.2132 10.0709L23.8493 10.707L14.7072 19.8491L13.293 18.4349L21.6568 10.0711ZM18 11H0V9H18V11Z" fill="#0B6CFE"/>
-                                            </svg>
-                                        </span>
-                                    </motion.div>
-                                    </Link>
-                                </motion.div>
-                            )
-                        })}
+              >
+                <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M21.6568 10.0711L13.2928 1.70706L14.707 0.292847L23.8492 9.43498L23.2132 10.0709L23.8493 10.707L14.7072 19.8491L13.293 18.4349L21.6568 10.0711ZM18 11H0V9H18V11Z" fill="white" />
+                </svg>
+              </span>
+            </motion.div>
+          </div>
+                                   
+                                    
+        </Link>
+      </motion.div>
+                            
                         
+                             
+                    
+
+                    
+                    
+
                 
-                    
-
-                    
-                    
-
-                    </Swiper>
                   
-                </motion.div>
-                </div>
-            </div>  
-            </motion.div> 
-           
-
-            </AnimatePresence>  
+            
         )
     }
 
 
-    const Categories = ({ slug, name, id }) => {
-        return (
-        <Link to={`/for-childrens/category/${slug}`}>
-        <div
-            className={slug}
-            sx={{
+    const Categories = ({ uri, slug, name, id }) => {
+        return (          
+          <Link to={`/${uri}`}>
+            <span
+              className={slug}
+              sx={{
                 opacity: '0.7',
                 ":hover": {                      
                     opacity: '1 ',
                     },
             }}
-        >
-        </div> 
-        </Link>
+            /> 
+          </Link>   
         )
     }
 

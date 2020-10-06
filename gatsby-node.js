@@ -38,23 +38,29 @@ exports.createResolvers = async (
   })
 }
 
+
+
+
+
 const createPosts = require(`./node/createPosts`)
 const createPages = require(`./node/createPages`)
 const createChildrens = require(`./node/createChildrens`)
 const createCategory = require(`./node/createCategory`)
+const createBlog = require(`./node/createBlog`)
 
 
 
 exports.createPages = async ({ actions, graphql }) => {
   const pluginOptions = {
-    wordPressUrl: `https://wintex.local/`,
-        uploadsUrl: `https://wintex.local/wp-content/uploads/`,
+    wordPressUrl: `ttp://admin.intexchange.education/`,
+        uploadsUrl: `ttp://admin.intexchange.education/wp-content/uploads/`,
   }
 
   await createPosts({ actions, graphql })
   await createPages({ actions, graphql })
   await createChildrens({ actions, graphql })
   await createCategory({ actions, graphql })
+  await createBlog({ actions, graphql })
 
 }
 

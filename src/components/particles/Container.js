@@ -8,14 +8,11 @@ export default props =>
     {...props}
     sx={{     
       
-      position: 'absolute',
+      position: 'relative',
       zIndex: '2',
-      left: 0,
-      right: 0,
-      top: 0,
-      bottom: 0,
       overflowY: ['scroll', 'initial', 'scroll'],
       overflowX: 'hidden',
+      height: '100%',
       "::-webkit-scrollbar": {                      
         width: '0',
         

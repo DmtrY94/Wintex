@@ -19,7 +19,7 @@ function Toolbar() {
 
         <div
         sx={{
-          display: ['none', 'block', 'none'],
+          display: ['none', 'block', 'block',  'none'],
           position: 'fixed',
           bottom: 0,
           left: 0, 
@@ -28,7 +28,7 @@ function Toolbar() {
           borderTopLeftRadius: '10px',
           borderTopRightRadius: '10px',
           zIndex: '998',
-          background: 'linear-gradient(191.87deg, #8FD300 27.55%, #00B707 132.85%)'
+          background: 'linear-gradient(179.75deg, #8FD300 -42.46%, #00B707 161.52%)'
 
         }}
       >
@@ -38,7 +38,7 @@ function Toolbar() {
                 display: 'flex',
                 flexDirection: 'row',
                 position: 'relative',               
-                padding: '0 30px',
+                padding: '0 20px',
                 width: '80%',
                 height: '55px',
                 justifyContent: 'space-between'
@@ -74,7 +74,7 @@ const ToolbarItem = ({ url, label, childItems }) => {
     return (
     <div
         sx={{}}
-        className="menu-item toolbar-icon"
+        className="toolbar-icon"
     >
         {('#' !== url) ? (
         <Link 
@@ -113,8 +113,8 @@ const ToolbarItem = ({ url, label, childItems }) => {
                 display: 'flex',
                 flexDirection: 'column',
                 position: 'fixed',
-                left: '30px',
-                right: '30px',     
+                left: '20px',
+                right: '20px',     
                 bottom: '70px',        
                 bg: 'primary',
                 borderRadius: '10px',
@@ -152,7 +152,7 @@ const MenuChildItem = ({url, label}) => {
                 fontSize: '1rem',
                 borderBottom: '1px solid rgba(255, 255, 255, 0.15)'
             }}
-            to={`/for-childrens/${relativeChildLink}`}
+            to={relativeChildLink}
             activeStyle={{ color: "rgba(255, 255, 255, 0.6)" }}
             >{label}   
             </Link>

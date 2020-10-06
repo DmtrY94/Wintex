@@ -8,7 +8,7 @@ import Img from "gatsby-image"
 import HorizontalScroller from 'react-horizontal-scroll-container'
 import Swiper from 'react-id-swiper'
 
-
+import InstaT from "../../images/insta.svg"
 
 
 import 'swiper/css/swiper.css';
@@ -19,16 +19,21 @@ const modalStyles = {
       backgroundColor: "rgba(185, 185, 185, 0.79)",
     },
     content: {
-        position: "relative",
-        background: 'none',
-        border: 0,
-        height: '100%',
-        width: '100%',
-        left: 0,
-        right: 0,
-        bottom: 0, 
-        top: 0,
-        padding: 0,
+      position: 'fixed',
+      top: 'auto',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      border: '0px',
+      background: '0',
+      overflow: 'hidden',
+      borderRadius: '10px',
+      outline: 'none',
+      padding: '0',
+      transform: 'translateX(-50%)',
+      width: '100%',
+      height: 'auto',
+      maxWidth: '1280px',
         
     },
   }
@@ -40,6 +45,14 @@ class Instagr extends Component {
     state = {
         modalIsOpen: false,
         selectedImage: 0,
+    }
+
+    componentDidMount = () => {
+      window.addEventListener('keyup', this.handleKeyUp, false)
+    }
+  
+    componentWillUnmount = () => {
+      window.removeEventListener('keyup', this.handleKeyUp, false)
     }
     
     handleClick = (e, index) => {
@@ -123,6 +136,7 @@ class Instagr extends Component {
                         transition: "transform 0.25s ease-out",
                         paddingBottom: '1vh',
                         cursor: 'pointer',
+                        zIndex: '2',
                         ":focus": {
                             transform: "translateY(-5px)",
                         },
@@ -143,17 +157,17 @@ class Instagr extends Component {
                             sx={{
                                 position: 'relative',
                                 display: 'block',
-                                marginRight: '3.97vh',
+                                marginRight: ['2.0833vw', '2.97vh', '2.97vh', '2.0833vw'],
                                 willChange: "border-color",
                                 ":hover>span": {                      
-                                    border: '3px solid white',
+                                    border: ['0.1562vw solid white', '3px solid white', '3px solid white', '0.1562vw solid white'],
                                     borderTopColor: 'white',
                                     borderRightColor: 'white',
                                     borderBottomColor: 'white',
                                     
                                 },
                                 ":focus>span": {                      
-                                    border: '3px solid #white',
+                                    border: ['0.1562vw solid white', '3px solid white', '3px solid white', '0.1562vw solid white'],
                                     borderTopColor: 'white',
                                     borderRightColor: 'white',
                                     borderBottomColor: 'white',
@@ -164,7 +178,7 @@ class Instagr extends Component {
                         >
                             <span
                                 sx={{                                  
-                                    border: '3px solid #0B6CFE',
+                                    border: ['0.1562vw solid #0B6CFE', '3px solid #0B6CFE', '3px solid #0B6CFE', '0.1562vw solid #0B6CFE'],
                                     display: 'flex',                                  
                                     borderRadius: '50%',
                                     alignItems: 'center',
@@ -182,8 +196,8 @@ class Instagr extends Component {
                                     padding: '10px',
                                     overflow: 'hidden',
                                     borderRadius: '50%',
-                                    width: '65px',
-                                    height: '65px',
+                                    width: ['3.3854vw', '65px', '65px', '3.3854vw'],
+                                    height: ['3.3854vw', '65px', '65px', '3.3854vw'],
                                     willChange: "box-shadow",
                                     transition: "box-shadow 0.25s ease-out",
                                     ":hover": {                                 
@@ -198,8 +212,8 @@ class Instagr extends Component {
 
                     )
                   })}
+                  
 
-    
           <Modal
              isOpen={modalIsOpen}
              style={modalStyles}
@@ -208,7 +222,7 @@ class Instagr extends Component {
 
              onKeyUp={e => this.handleKeyDown(e)}
           >      
-            <Styled.root>   
+              
             
 
                        
@@ -286,7 +300,8 @@ class Instagr extends Component {
                           sx={{
                               position: 'relative',
                               display: 'block',
-                              marginRight: '1.97vh',
+                              marginRight: '1.05vh',
+                              marginLeft: '1.05vh',
                               willChange: "border-color",
 
                               ":hover>span": {                      
@@ -309,7 +324,7 @@ class Instagr extends Component {
                           <span
                               className={i === selectedImage ? 'active-insta' : ''}
                               sx={{                                  
-                                  border: '3px solid #0B6CFE',
+                                  border: ['0.1562vw solid #0B6CFE', '3px solid #0B6CFE', '3px solid #0B6CFE', '0.1562vw solid #0B6CFE'],
                                   display: 'flex',                                  
                                   borderRadius: '50%',
                                   alignItems: 'center',
@@ -327,8 +342,9 @@ class Instagr extends Component {
                                   padding: '10px',
                                   overflow: 'hidden',
                                   borderRadius: '50%',
-                                  width: '65px',
-                                  height: '65px',                                
+                                  width: ['3.3854vw', '65px', '65px', '3.3854vw'],
+                                  height: ['3.3854vw', '65px', '65px', '3.3854vw'],
+                                                              
                               }}
                           />
                           </span>
@@ -386,12 +402,15 @@ class Instagr extends Component {
 
                 
 
-                <div onClick={this.goBack} disabled={selectedImage === 0}
+                <button onClick={this.goBack} disabled={selectedImage === 0}
                   sx={{
                     display: ['flex', 'none', 'flex'],
                     alignItems: 'center',
                     cursor: 'pointer',
-                    paddingRight: '40px'
+                    paddingRight: '40px',
+                    background: 0,
+                    border: 0,
+                    outline: 'none'
                   }}
                 >
                   <span
@@ -404,7 +423,8 @@ class Instagr extends Component {
                   </svg>
                   </span>
                   
-                </div>
+                </button>
+               
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -414,16 +434,15 @@ class Instagr extends Component {
                     flexDirection: "colrowumn",
                     position: "relative",
                     overflow: 'hidden',              
-                    maxWidth: "1120px",
-                    maxHeight: ['728px', '100%', '728px'],                
+                    maxWidth: ['58.3333vw', '720px', '720px','58.3333vw'],
+                    maxHeight: ['37.9166vw', '100%', '428px', '37.9166vw'],                
                     borderRadius: '10px',
                     bg: 'white'
-                  }} 
-
-                >
+                  }} >
                   <div
                   sx={{
-                      width: ['65%', '100%', '65%']
+                      width: ['65%', '100%', '65%'],
+                      minWidth: ['400px', '200px', '400px']
                   }}
                   >
                     <Img  fluid={node[selectedImage].localFile.childImageSharp.fluid} />
@@ -431,7 +450,7 @@ class Instagr extends Component {
                   <div
                   sx={{
                       width: ['35%', '100%', '35%'],
-                      maxHeight: ['728px', '100%', '728px'],
+                      maxHeight: ['37.9166vw', '100%', '100%', '37.9166vw'],
                       overflowY: 'scroll',
                       overflowX: 'hidden',                                         
                       ' &::-webkit-scrollbar ' : {
@@ -449,20 +468,24 @@ class Instagr extends Component {
                   }}
                   >
                     <Styled.h3
-                    sx={{                   
-                      paddingTop: '32px',
-                      paddingLeft: '32px'
+                    sx={{      
+                      fontSize: ['1.0416vw', '20px', '20px', '1.0416vw'],             
+                      paddingTop: ['1.5625vw', '20px', '20px', '1.5625vw'],
+                      paddingLeft: ['1.5625vw', '20px', '20px', '1.5625vw']
                     }}
                     ><a href="https://www.instagram.com/intexchange.ua/" sx={{ color: 'black', ':hover': { color: 'primary' } }}>{node[selectedImage].username}</a></Styled.h3>
-                      <article sx={{ my: 4, px: [3, 4] }} dangerouslySetInnerHTML={{ __html: captions }} />
+                      <article sx={{ padding: ['1.5625vw', '20px', '20px', '1.5625vw'], fontSize: ['0.9375vw', '18px', '18px', '0.9375vw'], lineHeight: '1.66',  fontFamily: '"Fira Sans", sans-serif', }} dangerouslySetInnerHTML={{ __html: captions }} />
                   </div>  
                 </motion.div>             
-                <div onClick={this.goForward} disabled={selectedImage === node.length - 1}
+                <button onClick={this.goForward} disabled={selectedImage === node.length - 1}
                   sx={{
                     display: ['flex', 'none', 'flex'],
                     alignItems: 'center',
                     cursor: 'pointer',
-                    paddingLeft: '40px'
+                    paddingLeft: '40px',
+                    background: 0,
+                    border: 0,
+                    outline: 'none'
                   }}
                 >
                   <span
@@ -476,14 +499,14 @@ class Instagr extends Component {
                   <path fillRule="evenodd" clipRule="evenodd" d="M18.7176 0.303525C19.1022 0.699834 19.0928 1.33293 18.6965 1.71758L2.4358 17.5L18.6965 33.2824C19.0928 33.6671 19.1022 34.3002 18.7176 34.6965C18.3329 35.0928 17.6998 35.1022 17.3035 34.7176L0.303525 18.2176C0.109497 18.0293 0 17.7704 0 17.5C0 17.2296 0.109497 16.9707 0.303525 16.7824L17.3035 0.28242C17.6998 -0.102233 18.3329 -0.0927836 18.7176 0.303525Z" fill="white"/>
                   </svg>
                   </span>
-                </div>
+                </button>
               </div>
            
 
 
             </div>
             
-            </Styled.root>                                       
+                                                   
           </Modal>
         </Fragment>
       )

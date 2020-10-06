@@ -2,7 +2,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import { jsx, Styled } from 'theme-ui'
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from 'gatsby'
 import FluidImage from '../../molecules/FluidImage'
 import { motion } from "framer-motion"
 
@@ -34,8 +34,6 @@ const staggers = {
 
 
 const ContentList = ({ node }) => {
-
-    
 
 
     const featuredImage = node.featuredImage
@@ -73,22 +71,20 @@ const ContentList = ({ node }) => {
                                 }}
                                 >
                                     
-                                    
+                                    <Link to={`/${node.uri}`}>
                                                                           
 
                                     <div                                 
                                     sx={{
-                                        cursor: 'grab',  
-                                        
-                                        height: '45vh',                       
+                                        cursor: 'pointer',                                         
+                                        height: ['23.6015vw', '45vh', '45vh', '23.6015vw'],                     
                                         backgroundSize: 'cover',
                                         position: 'relative',
-                                        borderRadius: '8px',
+                                        borderRadius: ['0.78125vw', '15px', '15px', '0.78125vw'],
                                         bg: 'background',                     
                                         boxShadow: '0px 14px 25px rgba(0, 41, 102, 0.3)',
                                         display: 'flex',
                                         flexDirection: 'column',
-                                        
                                         overflow: 'hidden',
                                         zIndex: '3',
                                         willChange: "box-shadow",
@@ -112,7 +108,7 @@ const ContentList = ({ node }) => {
                                                     width: '100%',
                                                     height: '100%',
                                                     position: 'absolute',
-                                                    background: 'linear-gradient(3.01deg, #000000 -42.6%, rgba(0, 0, 0, 0) 66.89%)',
+                                                    background: 'linear-gradient(3.01deg, #000000 -22.6%, rgba(0, 0, 0, 0) 66.89%)',
                                                     zIndex: '2'
                                                 },
                                             }}
@@ -123,7 +119,7 @@ const ContentList = ({ node }) => {
                                                 display: 'flex',
                                                 flexDirection: 'row',
                                                 justifyContent: 'space-between',
-                                                padding: '18px',
+                                                padding: ['0.9375vw 0.9375vw', '18px 18px', '18px 18px', '0.9375vw 0.9375vw'],
                                                 zIndex: '2',
                                                 alignItems: 'center'
                                             }}
@@ -131,14 +127,14 @@ const ContentList = ({ node }) => {
                                         <div
                                                 sx={{
                                                     fontFamily: 'heading',
-                                                    fontWeight: '400',
+                                                    fontWeight: '700',
                                                     textTransform: 'uppercase',
-                                                    fontSize: 12,
+                                                    fontSize: ['0.625vw', '12px', '12px', '0.625vw'],
                                                     color: 'white',
-                                                    padding: '4px 5px 4px 5px',
-                                                    borderRadius: '5px',
-                                                    bg: 'primary',
-                                                    boxShadow: '0 0 0px 1px #4891FE'
+                                                    padding: ['0.2083vw 0.5208vw 0.2083vw 0.5208vw', '4px 10px 4px 10px', '4px 10px 4px 10px', '0.2083vw 0.5208vw 0.2083vw 0.5208vw'],
+                                                    borderRadius: '32px',
+                                                    background: 'linear-gradient(39.9deg,#0B6CFE 22.83%,#458FFF 79.5%)', 
+                                                    letterSpacing: '0.018rem'   
                                                 
                                                 }}
                                         > {node.PostTypeForChildrenFields.school}</div>
@@ -158,72 +154,48 @@ const ContentList = ({ node }) => {
                                                 display: 'flex',
                                                 alignItems: 'flex-end',
                                                 flexGrow: '1',
-                                                padding: '18px',
+                                                padding: ['0.2604vw 0.9375vw', '5px 18px', '5px 18px', '0.2604vw 0.9375vw'],
                                                 color: 'white',
                                                 fontFamily: '"Fira Sans", sans-serif',                                              
                                                 fontWeight: '300',
-                                                fontSize: '14px',
+                                                fontSize: ['0.7291vw', '14px', '14px', '0.7291vw'],
                                                 zIndex: '2'                            
                                             }}
                                         >
                                            <div
                                                 sx={{
-                                                    borderTop: '1px solid rgba(255, 255, 255, 0.2)',
-                                                    paddingTop: '10px',
+                                                    borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
+                                                    paddingBottom: '10px',
                                                     width: '100%'
                                                 }}
                                             >
                                                 {node.PostTypeForChildrenFields.age}
                                             </div>
                                         </div>
-                                    </div>
-                                        
-
-
-                                    <Link 
-                                        
-                                        to={`/for-childrens/${node.uri}`}
-                                    >
-                                    <motion.div
+                                        <motion.div
                                         initial={{ opacity: 0, y: -40}}
                                         animate={{ opacity: 1, y: 0}}
                                        
                                         transition={{ duration: 0.5, delay: 0.8}}    
                                         sx={{                                                                
-                                            margin: 0,
-                                            bg: 'white',
-                                            
-                                            padding: '22px 18px 12px 18px',
-                                            marginTop: '-5px',
-                                            borderBottomLeftRadius: '10px',
-                                            borderBottomRightRadius: '10px',
+                                            margin: 0,                                                                                  
                                             display: 'flex',
                                             flexDirection: 'row',
                                             alignItems: 'center',
-                                            justifyContent: 'space-between',
-                                            boxShadow: '0px 14px 25px rgba(0, 41, 102, 0.07)',
-                                            willChange: "transform, box-shadow",
-                                            transition: "transform 0.25s ease-out, box-shadow 0.25s ease-out",                                            
-                                            ":hover>div": {                                       
-                                                color: 'primary',                       
-                                            },                                      
-                                            ":hover>span": {                                       
-                                                transform: 'rotate(-90deg) translateX(7px)'                       
-                                            },
-                                            ":hover": {                                       
-                                                boxShadow: '0px 4px 40px rgba(255, 255, 255, 0.8)',                       
-                                            },                                                           
+                                            justifyContent: 'space-between', 
+                                            zIndex: '3', 
+                                            padding:  ['0.2604vw 0.9375vw 0.9375vw 0.9375vw', '5px 18px 18px 18px', '5px 18px 18px 18px', '0.2604vw 0.9375vw 0.9375vw 0.9375vw']                                                                                                                        
                                         }}
                                     >
                                         <div
                                             sx={{
                                                 textTransform: 'uppercase',
-                                                color: '#000',                  
+                                                color: 'white',                  
                                                 maxWidth: '75%',
-                                                fontSize: '1.2rem',
-                                                lineHeight: '24px',
+                                                fontSize: ['0.9375vw', '1rem', '1rem', '0.9375vw'],
+                                                lineHeight: '1.4',
                                                 fontFamily: 'heading',
-                                                fontWeight: '600'                                                                                                                       
+                                                fontWeight: '500'                                                                                                                       
                                             }}
                                             dangerouslySetInnerHTML={{ __html: node.title }} 
                                         >
@@ -237,10 +209,16 @@ const ContentList = ({ node }) => {
                                             }}
                                         >
                                             <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fillRule="evenodd" clipRule="evenodd" d="M21.6568 10.0711L13.2928 1.70706L14.707 0.292847L23.8492 9.43498L23.2132 10.0709L23.8493 10.707L14.7072 19.8491L13.293 18.4349L21.6568 10.0711ZM18 11H0V9H18V11Z" fill="#0B6CFE"/>
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M21.6568 10.0711L13.2928 1.70706L14.707 0.292847L23.8492 9.43498L23.2132 10.0709L23.8493 10.707L14.7072 19.8491L13.293 18.4349L21.6568 10.0711ZM18 11H0V9H18V11Z" fill="white"/>
                                             </svg>
                                         </span>
                                     </motion.div>
+                                    </div>
+                                        
+
+
+                                    
+                                    
                                     </Link>
                                 </motion.div>
                             </motion.div> 

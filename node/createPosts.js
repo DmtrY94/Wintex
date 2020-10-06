@@ -11,11 +11,15 @@ module.exports = async ({ actions, graphql }) => {
           id
           uri
           title
+          slug
           content
           featuredImage {
             ${mediaFields}
           }  
-          ${seoFields}       
+          ${seoFields} 
+          language {
+            slug
+          }      
         }
       }
     }
@@ -41,7 +45,7 @@ module.exports = async ({ actions, graphql }) => {
           context: {
             ...post,
             id: post.id,
-            slug: post.uri,
+            slug: post.slug,
             title: post.title,
           },
         })

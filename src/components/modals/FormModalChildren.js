@@ -2,9 +2,10 @@
 import React, { Component } from 'react'
 import { jsx, Styled } from "theme-ui"
 import { navigate } from "gatsby"
+import { FormattedMessage } from 'react-intl'
 import Modal from 'react-modal'
 
-
+import TextForm from '../modals/TextForm'
 
 Modal.setAppElement(`#___gatsby`)
 const modalStyles = {
@@ -56,31 +57,40 @@ class FormModal extends Component {
         <div>           
             <button onClick={this.openModal}
                 sx={{
-                    background: 'linear-gradient(272.6deg, #56B8E9 12.03%, #0B6CFE 72.88%)',
+                    background: 'linear-gradient(39.9deg, #0B6CFE 22.83%, #458FFF 79.5%)',
                     border: 0,
                     borderRadius: '100px',
-                    padding: '18px 27px',
+                    padding: ['0.9375vw 1.40625vw', '18px 27px', '18px 27px', '0.9375vw 1.40625vw'],
                     fontFamily: '"Oswald", sans-serif',
                     textTransform: 'uppercase',
                     color: 'white',
-                    fontSize: '16px',
+                    fontSize: ['0.833vw', '16px', '16px', '0.833vw'],
                     fontWeight: '700',
                     cursor: 'pointer',
                     outline: 'none',
                     display: 'flex',
                     alignItems: 'center',
-                    boxShadow: '0px 10px 30px rgba(11, 128, 254, 0.71)',
+                    boxShadow: '0 7px 14px rgba(11, 108, 254, 0.2), 0 3px 6px rgba(11, 108, 254, 0.2)',
                     willChange: 'box-shadow',
-                     transition: 'box-shadow 0.25s ease-out',
+                    transition: 'transform 0.25s ease-out, box-shadow 0.35s ease-out',
                     ":focus": {
-                        boxShadow: '0px 1px 10px rgba(0, 0, 0, 0.05);',   
+                        background: 'linear-gradient(39.9deg, #0B6CFE 22.83%, #458FFF 79.5%)',
+                        boxShadow: '0px 10px 30px rgba(11, 128, 254, 0.71)', 
+                        color: 'white', 
+                        transform: 'scale(1.05)',   
                     },                                
-                    ":hover": {                           
-                        boxShadow: '0px 1px 10px rgba(0, 0, 0, 0.05);',                   
+                    ":hover": {   
+                        background: 'linear-gradient(39.9deg, #0B6CFE 22.83%, #458FFF 79.5%)',                       
+                        boxShadow: '0px 10px 30px rgba(11, 128, 254, 0.71)', 
+                        color: 'white',  
+                        transform: 'scale(1.05)',                 
                     }, 
+                    ":active": {
+                        transform: 'scale(.94)',
+                    }
                 }}
             >
-                    Записатись
+                    <FormattedMessage id="buttonaddz" />
                 <span
                     sx={{
                         display: 'flex',
@@ -140,144 +150,10 @@ class FormModal extends Component {
                         padding: '40px'
                     }}
                 >  
-                    <Styled.h2 sx={{color: 'black', marginBottom: '4vh'}}>Записатись</Styled.h2>
+                    <Styled.h2 sx={{color: 'black', marginBottom: '4vh'}}> <FormattedMessage id="buttonaddz" /></Styled.h2>
                     <form>
-                    <label
-                        sx={{
-                            position: 'relative',
-                            width: '100%',
-                            height: '60px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            border: '1px solid #EEECEC',
-                            backgroundColor: 'rgba(196, 196, 196, 0.15)',
-                            borderRadius: '10px',
-                            marginBottom: '40px',
-                            ":active>p": {
-                                top: '-30px',
-                                position: 'relative',
-                                background: 'white',
-                                padding: '0 10px',  
-                                color: '#0B6CFE'
-                            }, 
-                            ":active": {
-                                border: '1px solid #0B6CFE', 
-                                backgroundColor: 'white'
-                            }, 
-                        }}
-                    >
-                        <p
-                            sx={{marginLeft: '15px', color: '#C4C4C4', fontFamily: 'body'}}
-                        >Ім'я</p>
-                        <input 
-                            sx={{
-                                position: 'absolute',
-                                left: 0,
-                                right: 0,
-                                top: 0,
-                                bottom: 0,
-                                width: '100%',                            
-                                border: 0,
-                                background: 'transparent',
-                                padding: '0 15px',
-                                outline: 'none',
-                            }}
-                        type="text" name="name" />
-                    </label>
-                    <label
-                        sx={{
-                            position: 'relative',
-                            width: '100%',
-                            height: '60px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            border: '1px solid #EEECEC',
-                            backgroundColor: 'rgba(196, 196, 196, 0.15)',
-                            borderRadius: '10px',
-                            marginBottom: '40px'
-                        }}
-                    >
-                        <p
-                            sx={{marginLeft: '15px', color: '#C4C4C4', fontFamily: 'body'}}
-                        >Номер телефону</p>
-                        <input 
-                            sx={{
-                                position: 'absolute',
-                                left: 0,
-                                right: 0,
-                                top: 0,
-                                bottom: 0,
-                                width: '100%',
-                                border: 0,
-                                background: 'transparent',
-                                padding: '0 15px',
-                                outline: 'none',
-                            }}
-                        type="text" name="name" />
-                    </label>
-                    <label
-                        sx={{
-                            position: 'relative',
-                            width: '100%',
-                            height: '60px',
-                            display: 'flex',
-                            alignItems: 'center',
-                            border: '1px solid #EEECEC',
-                            backgroundColor: 'rgba(196, 196, 196, 0.15)',
-                            borderRadius: '10px',
-                            marginBottom: '40px'
-                        }}
-                    >
-                        <p
-                            sx={{marginLeft: '15px', color: '#C4C4C4', fontFamily: 'body'}}
-                        >email</p>
-                        <input 
-                            sx={{
-                                position: 'absolute',
-                                left: 0,
-                                right: 0,
-                                top: 0,
-                                bottom: 0,
-                                width: '100%',
-                                border: 0,
-                                background: 'transparent',
-                                padding: '0 15px',
-                                outline: 'none',
-                            }}
-                        type="text" name="name" />
-                    </label>
                     
-                    
-                    <button onClick={this.openModal}
-                        sx={{
-                            background: 'linear-gradient(272.6deg, #56B8E9 12.03%, #0B6CFE 72.88%)',
-                            border: 0,
-                            borderRadius: '100px',
-                            padding: '18px 27px',
-                            fontFamily: '"Oswald", sans-serif',
-                            textTransform: 'uppercase',
-                            color: 'white',
-                            fontSize: '16px',
-                            fontWeight: '700',
-                            cursor: 'pointer',
-                            outline: 'none',
-                            display: 'flex',
-                            alignItems: 'center',
-                            boxShadow: '0px 10px 30px rgba(11, 128, 254, 0.71)',
-                            willChange: 'box-shadow',
-                            transition: 'box-shadow 0.25s ease-out',
-                            margin: '0 auto',
-                            ":focus": {
-                                boxShadow: '0px 1px 10px rgba(0, 0, 0, 0.05);',   
-                            },                                
-                            ":hover": {                           
-                                boxShadow: '0px 1px 10px rgba(0, 0, 0, 0.05);',                   
-                            }, 
-                        }}
-                    >
-                            Відправити
-                        
-                    </button>
+                    <TextForm />
                     
                     </form>
                     

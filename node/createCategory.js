@@ -11,7 +11,11 @@ module.exports = async ({ actions, graphql }) => {
           categoryId
           slug
           name
+          uri
           ${seoFields}
+          language {
+            slug
+          }
         }
       }
     }
@@ -29,7 +33,7 @@ module.exports = async ({ actions, graphql }) => {
 
 
         actions.createPage({
-          path: `/for-childrens/category/${category.slug}`,
+          path: `${category.uri}`,
           component: path.resolve(`./src/templates/category.js`),
           context: {
             ...category,

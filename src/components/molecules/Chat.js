@@ -2,6 +2,16 @@
 import React, {useState} from 'react'
 import { jsx, Styled } from 'theme-ui'
 import { motion, AnimatePresence  } from "framer-motion"
+import { FormattedMessage } from 'react-intl'
+
+import {
+    BrowserView,
+    MobileView,
+    isBrowser,
+    isMobile
+  } from "react-device-detect";
+
+import Hand from "../../images/hand.svg"
 
 const Chat = () => {
 
@@ -15,25 +25,80 @@ const Chat = () => {
                 right: '45px',
                 bg: 'white',
                 borderRadius: '10px',
-                width: '200px',
+                width: '220px',
                 visibility: 'hidden',
                 opacity: 0,
-                zIndex: '6',
+                zIndex: '999',
+                transition: 'all 0.3s',
                 boxShadow: '0px 18px 47px rgba(11,108,254,0.37)',
                 "@media screen and (max-width: 768px)": {
-                    right: '30px',
+                    right: '20px',
                     bottom: '70px',
-                    left: '30px',
+                    left: '20px',
                     width: 'auto'
                 },    
             }}
         >
             <div
-                sx={{ padding: '15px 30px'}}
+                sx={{ padding: '30px 30px 15px 30px'}}
             >
-                <a href="https://t.me/Intexchange" rel="noopener noreferrer" target="_blank" sx={{ display: 'block', fontFamily: 'body', color: 'primary', borderBottom: '1px solid #E5E5E5', padding: '15px 0'}}>Telegram</a>
-                <a href="viber://chat?number=+380984241234" rel="noopener noreferrer" target="_blank" sx={{ display: 'block', fontFamily: 'body', color: 'primary', borderBottom: '1px solid #E5E5E5', padding: '15px 0'}}>Viber</a>
-                <a href="https://www.messenger.com/t/intexchangeua" rel="noopener noreferrer" target="_blank" sx={{ display: 'block', ontFamily: 'body', color: 'primary', padding: '15px 0'}}>Messenger</a>
+                <p sx={{ fontFamily: 'body', fontSize: '1rem' }}><span sx={{ fontWeight: '500'}}><FormattedMessage id="chat-text-1" /></span><br/><FormattedMessage id="chat-text-2" /></p>
+                <div sx={{position: 'relative', marginTop: '10px', textAlign: 'center'}}><Hand sx={{ transform: 'rotate(90deg)' }}/></div>
+                <a href="https://t.me/Intexchange" rel="noopener noreferrer" target="_blank" 
+                    sx={{ 
+                        display: 'block', 
+                        fontFamily: 'body', 
+                        color: 'primary', 
+                        borderBottom: '1px solid #E5E5E5', 
+                        padding: '15px 0',
+                        ":hover": {                      
+                            color: '#00B707 ',
+                            },
+                        }}>
+                            Telegram
+                </a>
+                <BrowserView>
+                <a href="viber://chat?number=+380984241234" rel="noopener noreferrer" target="_blank" 
+                    sx={{ 
+                        display: 'block', 
+                        fontFamily: 'body', 
+                        color: 'primary', 
+                        borderBottom: '1px solid #E5E5E5', 
+                        padding: '15px 0',
+                        ":hover": {                      
+                            color: '#00B707 ',
+                            },
+                        }}>
+                            Viber
+                </a>
+                </BrowserView>
+                <MobileView>
+                <a href="viber://add?number=+380984241234" rel="noopener noreferrer" target="_blank" 
+                    sx={{ 
+                        display: 'block', 
+                        fontFamily: 'body', 
+                        color: 'primary', 
+                        borderBottom: '1px solid #E5E5E5', 
+                        padding: '15px 0',
+                        ":hover": {                      
+                            color: '#00B707 ',
+                            },
+                        }}>
+                            Viber
+                </a>
+                </MobileView>
+                <a href="https://www.messenger.com/t/intexchangeua" rel="noopener noreferrer" target="_blank" 
+                    sx={{ 
+                        display: 'block', 
+                        fontFamily: 'body', 
+                        color: 'primary', 
+                        padding: '15px 0',
+                        ":hover": {                      
+                            color: '#00B707 ',
+                            },
+                        }}>
+                            Messenger
+                </a>
             </div>
         </div>
         <div
@@ -53,7 +118,7 @@ const Chat = () => {
                 cursor: 'pointer',
                 boxShadow: '0px 10px 30px rgba(11, 128, 254, 0.71)',
                 "@media screen and (max-width: 768px)": {
-                    right: '30px',
+                    right: '20px',
                     bottom: 0,
                     background: 0,
                     boxShadow: 'none',

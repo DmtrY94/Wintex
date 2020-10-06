@@ -62,6 +62,26 @@
   background: radial-gradient(60.3% 44.38% at 31.39% 31.7%, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 96.35%);
 }
 
+.malta {
+  position: relative;
+  display: block;
+  background: no-repeat url(../img/malta.svg) center;
+  width: 33px;
+  height: 33px;
+  margin-top: 12px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.27);
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.malta::before {
+  display: block;
+  position: absolute;
+  content: "";
+  width: 33px;
+  height: 33px;
+  background: radial-gradient(60.3% 44.38% at 31.39% 31.7%, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 96.35%);
+}
 
 .children-summer-holidays {
   background: no-repeat url(../img/summer-children.svg) center;
@@ -153,6 +173,12 @@
   animation: flag 2.5s infinite linear;
 }
 
+.sticky-outer-wrapper.active {
+  top: 0 !important;
+}
+
+
+
 @keyframes flag {
   from {
     transform: rotate(0deg); }
@@ -161,7 +187,9 @@
   }
 }
 
-.Block:hover .canada, .Block:hover .usa {
+
+
+.Block:hover .canada, .Block:hover .usa, .Block:hover .malta, .childern-title .canada, .childern-title .usa, .childern-title .malta, .childern-title .greatbritain  {
   animation: flag 2.5s infinite linear;
 }
 

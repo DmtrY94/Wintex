@@ -6,17 +6,13 @@ import { useRelative } from '../../particles/hooks/useRelative'
 import { useSiteMenuData } from '../../particles/hooks/useSiteMenuData'
 import { motion, AnimatePresence  } from "framer-motion"
 import Logo from "../../molecules/Logo"
-import {
-    BrowserView,
-    MobileView,
-    isBrowser,
-    isMobile
-  } from "react-device-detect";
+import SelLang from "../../molecules/SelLang"
+
 
 import './header.css'
 
 
-function Header() {
+function Header(props) {
     const menuData = useSiteMenuData()
     const headerData = menuData.nodes.find(menu => menu.slug == "menu_main")
 
@@ -24,7 +20,7 @@ function Header() {
     return (
         <header
             sx={{
-                padding: ['2.68vh 10vh 0 10vh', '20px 30px 0 30px', '2.68vh 5vh 0 5vh', '2.68vh 10vh 0 10vh' ],
+                padding: ['2.68vh 5.208vw 0 5.208vw', '20px 20px 0 20px', '2.68vh 5vh 0 5vh', '2.68vh 5.208vw 0 5.208vw' ],
                 position: 'relative',
                 zIndex: '4'
             }}
@@ -39,6 +35,10 @@ function Header() {
                  <Link 
                     className="logo"              
                     to="/"
+                    sx={{
+                        paddingRight: ['2.0453vw', 0, '2.0453vw'],
+                        borderRight: ['2px solid rgba(0,0,0,0.035)', 0, '2px solid rgba(0,0,0,0.035)']
+                    }}
                  >
                     <Logo />
                  </Link>
@@ -52,37 +52,52 @@ function Header() {
                     <nav
                         sx={{
                             display: ['flex', 'none', 'none', 'flex'],
-                            marginLeft: '4.9vh',
+                            marginLeft: '1.8758vw',
                             position: 'relative'
                         }}
                     
                     >
-
-                        {headerData.menuItems.nodes.map(item => (
-                            
-                           <MenuItem key={item.id} {...item} />
                         
-                           
-                        ))}
+
+                            {headerData.menuItems.nodes.map(item => (
+                                
+                            <MenuItem key={item.id} {...item} />
+                            
+                            
+                            ))}
+
+                      
+
                         
                         
                     </nav>
-                    <div className="DropdownContent"
+                    <div 
                         sx={{
                             marginLeft: 'auto',
-                            position: 'relative',                           
+                            position: 'relative',
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center'                           
                         }}
                     >
-                        <BrowserView>
-                        
+                        <SelLang langs={props.langs} />
+                        <div
+                            className="DropdownContent"
+                            sx={{
+                                position: 'relative'
+                            }}
+                        >
                             <a  
                             sx={{
-                                display: 'flex',
+                                display: ['flex', 'none', 'flex'],
                                 alignItems: 'center',
                                 color: '#0D2344',
                                 fontFamily: 'heading',
                                 fontWeight: '700',
-                                fontSize: '1.25rem',
+                                fontSize: ['calc(3.5*0.25vw)', '1.25rem', 'calc(3.5*0.25vw)',],
+                                border: '2px solid rgba(0,0,0,0.035)',
+                                padding: '0.6375vw 1.40625vw',
+                                borderRadius: '32px'
                             }}
                             href="#">
                                 <span
@@ -91,7 +106,9 @@ function Header() {
                                         color: ['#0D2344', 'white','#0D2344'],
                                         padding: ['0', '9px', '0'],
                                         border: ['0', '1px solid rgba(255, 255, 255, 0.2)', '0'],
-                                        borderRadius: ['inherit', '100%', 'inherit']                        
+                                        borderRadius: ['inherit', '100%', 'inherit'],
+                                        width: ['0.78125vw', '15px', '0.78125vw'],
+                                                    
                                     }}
                                 >
                                     <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -104,24 +121,25 @@ function Header() {
                                         display: ['flex', 'none','flex']
                                     }}
                                 >
-                                    +38 044 337 67 18
+                                    +38 063 982 56 82
                                 </span>
                             </a>
                             <nav
                             sx={{
-                                display: 'flex',
+                                display: ['flex', 'none', 'flex'],
                                 flexDirection: 'column',
-                                padding: '30px',
+                                padding: ['1.5625vw', '30px', '30px', '1.5625vw']  ,
                                 bg: 'white',
-                                borderRadius: '10px',
+                                borderRadius: ['0.5208vw', '10px', '10px', '0.5208vw'],
                                 boxShadow: '0px 18px 47px rgba(11, 108, 254, 0.37)',
                                 visibility: 'hidden',
                                 opacity: 0,
                                 position: 'absolute',                                
                                 zIndex: '4',
-                                width: '220px',
+                                width: ['11.4583vw', '220px', '11.4583vw'],
                                 left: '50%',
-                                transform: 'translateX(-50%)'                             
+                                transform: 'translateX(-50%)',
+                                marginTop: '0.5vw'                             
                             }}
                             >
                             <a 
@@ -129,12 +147,12 @@ function Header() {
                                     color: '#0D2344',
                                     fontFamily: 'heading',
                                     fontWeight: '700',
-                                    fontSize: '1.15rem',
+                                    fontSize: ['0.9375vw', '1.05rem', '1.05rem', '0.9375vw'],
                                     ':hover': { 
                                         color: 'primary' 
                                     },                                   
                                 }}
-                                href="/">
+                                href="tel:+380443376718">
                                     +38 044 337 67 18
                             </a>
                                 <p
@@ -142,12 +160,13 @@ function Header() {
                                         marginTop: '10px',
                                         fontFamily: 'body',
                                         fontWeight: 'body',
-                                        fontSize: 14,
-                                        marginBottom: '10px' 
+                                        fontSize: ['0.7291vw', '14px', '14px', '0.7291vw'],
+                                        paddingBottom: '20px',
+                                        borderBottom: '1px solid #e5e5e5' 
                                     }}
                                 
                                 >
-                                    Адрес: г. Киев<br/> ул. Шота Руставели 30Б
+                                     г. Киев<br/> ул. Шота Руставели 30Б
                                 </p>
                             <a 
                                  sx={{
@@ -155,30 +174,30 @@ function Header() {
                                     color: '#0D2344',
                                     fontFamily: 'heading',
                                     fontWeight: '700',
-                                    fontSize: '1.15rem',
+                                    fontSize: ['0.9375vw', '1.05rem', '1.05rem', '0.9375vw'],
                                     ':hover': { 
                                         color: 'primary' 
                                     }, 
                                 }}
-                            href="/">
-                                +38 044 337 67 18
+                            href="tel:+380639825682">
+                                +38 063 982 56 82
                             </a>
                             <p
                                 sx={{
                                     marginTop: '10px',
                                     fontFamily: 'body',
                                     fontWeight: 'body',
-                                    fontSize: 14
+                                    fontSize: ['0.7291vw', '14px', '14px', '0.7291vw'],
                                 }}
                             
-                            >Адрес: г. Киев<br/> ул. Шота Руставели 30Б</p>
+                            > г. Кривой Рог<br/> ул. Героев АТО 30в</p>
                             </nav>
 
-                        </BrowserView>
-                        <MobileView>
+                        
+                       
                             <Link 
                                 sx={{ display: ['none', 'block', 'none'] }}
-                            to="/contacts">    
+                            to="/contact">    
                             <span
                                 sx={{
                                     display: 'flex', marginRight: ['5px', '0', '5px'], marginTop: ['5px', '0', '5px'], 
@@ -193,8 +212,8 @@ function Header() {
                                 </svg>
                             </span>
                             </Link>
-                        </MobileView>
-                        
+                       
+                        </div>
                     </div>
                 </div>
             </div>
@@ -213,7 +232,7 @@ const MenuItem = ({ url, label, childItems }) => {
     <motion.div
         sx={{position: 'relative'}}
         className="menu-item" 
-        whileHover={{ y: -9 }}
+        whileHover={{ y: -7 }}
         transition={{ duration: 0.6}}
     >
         {('#' !== url) ? (
@@ -221,32 +240,33 @@ const MenuItem = ({ url, label, childItems }) => {
         sx={{
             display: 'flex',
             alignItems: 'center',
-            padding: '5px 15px',
+            padding: ['0.2604vw 0.8854vw', '5px 15px', '0.2604vw 0.8854vw'],
             color: 'white',
             fontFamily: '"Oswald", sans-serif',
-            fontWeight: '300',
+            fontWeight: '700',
             textTransform: 'uppercase',
-            fontSize: '1rem',
-            ":hover": {                      
-                color: 'primary',
-            },
+            fontSize: ['calc(3.5*0.25vw)', '1rem', 'calc(3.5*0.25vw)'],
         }}
         to={relativeLink}
-        activeStyle={{ color: "#0B6CFE", fontWeight: '400' }}
+        activeStyle={{ boxShadow: "0px 10px 30px rgba(41,57,74,0.33)", borderRadius: "5px" }}
         >{label}               
         </Link>
         ) : ( 
-            <div                         
+            <div      
+                           
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
-                    padding: '5px 15px',
+                    padding: ['0.2604vw 0.8854vw', '5px 15px', '0.2604vw 0.8854vw'],
                     color: 'white',
+                    fontWeight: '700',
                     fontFamily: '"Oswald", sans-serif',
-                    fontWeight: '300',
                     textTransform: 'uppercase',
-                    fontSize: '1rem',
+                    fontSize: ['calc(3.5*0.25vw)', '1rem', 'calc(3.5*0.25vw)'],
                     ":hover": {                      
+                        color: 'primary',
+                    },
+                    ":active": {                      
                         color: 'primary',
                     },
                 }}
@@ -269,6 +289,7 @@ const MenuItem = ({ url, label, childItems }) => {
                 boxShadow: '0px 18px 49px rgba(11, 108, 254, 0.37)',
                 visibility: 'hidden',
                 opacity: 0,
+                marginTop: '0.5vw',
             }}
         >
             {childitems.map(childitem => (                          
@@ -291,14 +312,14 @@ const MenuChildItem = ({url, label}) => {
             sx={{
                 display: 'flex',
                 alignItems: 'center',               
-                padding: '15px',
+                padding: ['0.8854vw', '15px', '0.8854vw'],
                 color: 'white',
                 fontFamily: 'body',
                 fontWeight: '300',
-                fontSize: '1rem',
+                fontSize: ['calc(3.5*0.25vw)', '1rem', 'calc(3.5*0.25vw)'],
                 borderBottom: '1px solid rgba(255, 255, 255, 0.15)'
             }}
-            to={`/for-childrens/${relativeChildLink}`}
+            to={`${relativeChildLink}`}
             activeStyle={{ color: "rgba(255, 255, 255, 0.6)" }}
             >{label}   
             </Link>

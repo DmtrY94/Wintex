@@ -2,9 +2,7 @@
     transition: all 0.3s  
 }
 
-.menu-item:hover>a {
-    color: #0B6CFE;
-}
+
 
 .menu-item:hover .menu-nav {
     

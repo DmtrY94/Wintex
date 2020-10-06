@@ -14,6 +14,10 @@ module.exports = async ({ actions, graphql }) => {
             id
             date
             content
+            slug
+            language {
+              slug
+            }
             featuredImage {
               ${mediaFields}
             }
@@ -41,9 +45,13 @@ module.exports = async ({ actions, graphql }) => {
               nodes {
                 name
                 slug
+                uri
               }
             }
             ${seoFields}
+            language {
+              slug
+            }
           }
         }
     }
@@ -61,13 +69,14 @@ module.exports = async ({ actions, graphql }) => {
 
 
         actions.createPage({
-          path: `/for-childrens/${caseChildren.uri}`,
+          path: `${caseChildren.uri}`,
           component: path.resolve(`./src/templates/children.js`),
           context: {
             ...caseChildren,
             id: caseChildren.id,
-            slug: caseChildren.uri,
+            slug: caseChildren.slug,
             title: caseChildren.title,
+            language: caseChildren.language,
           },
         })
       })

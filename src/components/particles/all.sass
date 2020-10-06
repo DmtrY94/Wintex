@@ -16,6 +16,10 @@ html
 body
   margin: 0
   display: block
+  -webkit-text-size-adjust: none
+
+input[type=text], input[type=submit], textarea, a, div
+	-webkit-appearance: none
 
 
 *, :after, :before
@@ -23,8 +27,9 @@ body
 
 a
   text-decoration: none
+  -webkit-tap-highlight-color: transparent
 
-ul[class],
+ul,
 ol[class]
   padding: 0
 
@@ -35,7 +40,7 @@ h2,
 h3,
 h4,
 p,
-ul[class],
+ul,
 ol[class],
 li,
 figure,
@@ -96,7 +101,30 @@ dd
 
 
 
-   
+.menu-item
+  border-radius: 5px
+  margin-right: 0.2604vw
+  &:nth-child(1)
+    background: #0B6CFE
+  &:nth-child(2)
+    background: #ffffff
+  
+  &:nth-child(3)
+    background: #0B6CFE
+    
+
+  &:nth-child(4)
+    background: #00969F
+    color: #ffffff
+
+  &:nth-child(5)
+    background: #00969F
+    color: #ffffff
+
+  &:nth-child(2)>div
+    color: #0B6CFE
+  
+
   
 
 
@@ -125,13 +153,90 @@ dd
   border: 3px solid #fff !important
 
 .container-swiper-list
-  padding-left: 10vh
-  padding-right: 10vh
+  padding-left: 5.208vw
+  padding-right: 5.208vw
+  margin-bottom: 20px  
   margin-top: 20px  
 
 .chat--show
   visibility: visible !important
   opacity: 1 !important
+
+
+.content p
+  margin: 1.7812vw 0
+  font-size: 0.9375vw
+  line-height: 1.66
+  &:first-child
+    margin-top: 0
+
+
+.content ul 
+  background: rgba(0, 0, 0, 0.02)
+  padding: 1.0416vw 1.5625vw 1.0416vw 2.0833vw
+  font-size: 0.9375vw
+  border-radius: 0.5208vw
+
+
+.content li 
+  line-height: 1.63
+  padding: 0.2604vw 0
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+  &:last-child
+    border-bottom: 0
+  a
+    color: #0B6CFE
+
+
+.content-post
+  margin: 0.8812vw 0
+  font-size: 0.9375vw
+  line-height: 1.66
+  &:first-child
+    margin-top: 0
+
+.content-post ul
+  font-size: 0.9375vw
+  border-radius: 0.5208vw
+  background: rgba(0, 0, 0, 0.02)
+  padding: 1.0416vw 1.5625vw 1.0416vw 2.0833vw
+  margin-bottom: 0.8812vw
+
+.content-post li 
+  line-height: 1.63
+  padding: 0.2604vw 0
+  &:last-child
+    border-bottom: 0
+  a
+    color: #0B6CFE
+
+
+.map--show
+  background: rgb(255, 255, 255)
+  color: #5fca03
+
+.text--show
+  height: auto !important
+
+.int-class-post-1
+  background: #000
+
+
+@keyframes moveup 
+  from 
+    transform: translateY(-20px) 
+  to 
+    transform: translateY(0)
+
+.intex-text-descr
+  animation: rotatetext linear 4.8s infinite alternate
+
+@keyframes rotatetext 
+  from 
+    transform: rotate(1.3deg)
+  to 
+    transform: rotate(0)  
+  
 
 @media screen and (max-width: 768px) 
 
@@ -145,12 +250,35 @@ dd
     animation: initial
     transform: rotate(-15deg)
 
-  .container
-    padding-left: 30px
-
   .container-swiper-list
-    padding-left: 30px
-    padding-right: 30px
+    padding-left: 20px !important
+    padding-right: 40px !important
+
+  .content p, .content-post p
+    margin: 15px 0
+    font-size: 1.05rem
+    
+  .content ul, .content-post ul
+    background: rgba(0, 0, 0, 0.02)
+    padding: 20px 30px 20px 40px
+    margin-bottom: 35px
+    font-size: 1.05rem
+    border-radius: 10px
+
+  .content li, .content-post li 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+    padding: 5px 0
+    font-size: 1.05rem
+
+  .content-post h2
+    font-size: 1.05rem
+
+  .map--show
+    color: #ffffff
+    border: 0 !important
+    background: linear-gradient(184.72deg, #8FD300 27.55%, #00B707 132.85%)
+
+  
 
 @media screen and (max-width: 1060px) 
   .container-swiper-list

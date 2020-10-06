@@ -19,7 +19,15 @@ const AnyReactComponent = ({ text }) =>
 </div>
 
 const GoogleMap = () => (
-  <div style={{ height: '100vh', width: '100%' }}>
+  <div
+    sx={{
+      height: ['100vh', '40vh', '100vh'],
+      width: '100%',
+      overflow: 'hidden',
+      borderRadius: '10px',
+      border: '2px solid #ffffff',
+    }}
+  >
     <GoogleMapReact
       // bootstrapURLKeys={{ key: 'AlzaSyBRKoTpCZsUXfcXyxHxoK-PpXMHYwfqs8o' }}
       bootstrapURLKeys={{ key: 'AIzaSyCi_UGl2eABWh5ZlVdRhUFm1DNa2GacYfw' }}
