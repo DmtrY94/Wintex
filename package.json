@@ -78,7 +78,7 @@
     "slick-carousel": "^1.8.1",
     "smooth-scrollbar-react": "^1.0.0",
     "styled-components": "^5.1.1",
-    "swiper": "^5.4.1",
+    "swiper": "^6.5.1",
     "theme-ui": "^0.2.52",
     "typeface-oswald": "^1.1.4",
     "uuid": "^3.4.0"
