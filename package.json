@@ -74,7 +74,7 @@
     "react-web-share-api": "0.0.2",
     "react-youtube": "^7.11.3",
     "screenfull-react": "0.0.4",
-    "sharp": "^0.25.3",
+    "sharp": "^0.30.5",
     "slick-carousel": "^1.8.1",
     "smooth-scrollbar-react": "^1.0.0",
     "styled-components": "^5.1.1",
